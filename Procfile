@@ -1,1 +1,1 @@
-web: gunicorn pijacana.wsgi
+web: gunicorn elos_be.wsgi
