@@ -27,6 +27,7 @@ from parceiros import urls, views
 app_name = 'elos_be'
 urlpatterns = [
     #path('', include('cadastro.urls')),
+    path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
     path('djrichtextfield/', include('djrichtextfield.urls')), #ATIVAÇÃO DE RICH-TEXT
     path('', RedirectView.as_view(url='/abrigo/')),
