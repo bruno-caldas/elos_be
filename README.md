@@ -10,11 +10,10 @@ Todo
 
 **Integrantes:** 
 
-- Antonio Carlos Albino Aires
 - Bruno Caldas de Souza
 - Eduardo Cabral de Souza
 - Vinicius Gomes Barbosa
-Todo
+- Por favor coloquem todos aqui!
 
 ## O site ao vivo se encontra em:
 
