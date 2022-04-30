@@ -1,0 +1,79 @@
+{% extends 'model-page.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Carrossel -->
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-4" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="univesp-kaotinho img-fluid" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Primeiro Slide"> 
+      <div class="carousel-caption d-sd-block">
+        <h5>Kãotinho e UniVESP</h5>
+        <p>Site desenvolvido pelos alunos da UniVESP</p>
+        <p>
+          <a class="btn btn-lg btn-secondary" href="{% url 'abrigo' %}" role="button">Saiba mais</a>
+        </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      
+      <img class="d-block h-100 w-100 d-inline-block img-carrossel" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiros3.svg" alt="Segundo Slide">
+      <div class="carousel-caption d-sd-block">
+        <h5>Nossos Parceiros</h5>
+        <p></p>
+        <p>
+          <a class="btn btn-lg btn-secondary" href="{% url 'parceiros:parceiros' %}" role="button">Confira</a>
+        </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block h-100 w-100 d-inline-block img-carrossel" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/eventos3.svg" alt="Terceiro Slide">
+      <div class="carousel-caption d-sd-block">
+        <h5>Projetos e Eventos</h5>
+        <p>Eventos do projeto</p>
+        <p>
+          <a class="btn btn-lg btn-secondary" href="{% url 'eventos:eventos' %}" role="button">Participe</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div> <!--Fim Carrossel -->
+<!-- Conteúdo Principal do site -->
+<div class="container marketing">
+  <!-- Três colunas de texto -->
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/ajuda1.png" alt="ajuda" width="140" height="140">
+      <h2>Como ajudar?</h2>
+      <p>Precisamos de você, verifique como ajudar.</p>
+      <p><a class="btn btn-secondary" href="{% url 'ajuda' %}" role="button">Mais detalhes »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/resgate1.png" alt="resgate" width="140" height="140">
+      <h2>Resgate de animais</h2>
+      <p>Fazemos resgaste de animais domésticos e silvestres.</p>
+      <p><a class="btn btn-secondary" href="{% url 'resgate' %}" role="button">Mais detalhes »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/contato1.png" alt="contato" width="140" height="140">
+      <h2>
+        Nossas redes e contatos</h2>
+      <p>Curta, compartilhe e se inscreva em nossas redes.</p>
+      <p><a class="btn btn-secondary" href="{% url 'contatos' %}" role="button">Mais detalhes »</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+</div>
+{% endblock %}

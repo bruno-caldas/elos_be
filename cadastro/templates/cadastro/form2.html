@@ -1,0 +1,49 @@
+{% extends 'templates/../model-page.html' %}
+
+{% block content %}
+
+<section>
+    <h2>Mural Fofura</h2>
+    <article>Mural de adoção e apadrinhamento de animais.</article>
+    <article>Curta! Compartilhe!</article>
+</section>
+
+    <!-- List of uploaded documents -->
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+        <section class="bloco-conteudo">
+            <ul>
+                <li><img class="rounded-circle" width="300px" src="{{ document.docfile.url }}"><br>
+                    Nome do cachorro: {{ document.nome_cachorro }}
+                    Porte do cachorro: {{ document.porte_cachorro }}
+                    Idade do cachorro: {{ document.idade_cachorro }}
+                </li>
+            </ul>
+        </section>
+        {% endfor %}
+        </ul>
+    {% else %}
+    <section class="bloco-conteudo">
+        <p>No documents.</p>
+    </section>
+
+    {% endif %}
+
+    <!-- Upload form. Note enctype attribute! -->
+<!--    <form action="{% url 'cadastro:mural_animais' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        <p>
+            {{ form.docfile.errors }}
+            {{ form.docfile }}
+        </p>
+        <p>Nome do cachorro: {{ form.nome }}</p>
+        <p>Porte do cachorro (P, M, G): {{ form.porte }}</p>
+        <p>Idade do cachorro: {{ form.idade }}</p>
+        <p><input type="submit" value="Upload" /></p>
+    </form>-->
+
+
+{% endblock %}

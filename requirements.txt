@@ -1,0 +1,13 @@
+asgiref==3.4.1
+certifi==2021.5.30
+django==3.2.5
+psycopg2==2.8.6
+pytz==2021.1
+sqlparse==0.4.1
+typing_extensions==3.10.0.0
+gunicorn==20.1.0
+django-heroku==0.3.1
+dj-database-url
+boto3
+django-storages
+django-richtextfield

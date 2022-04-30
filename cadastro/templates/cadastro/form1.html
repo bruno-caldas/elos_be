@@ -1,0 +1,103 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+<header class="blog-header bg-dark justify-content-center align-items-center m-0 p-0">
+    <div class="row flex-nowrap justify-content-center align-items-center">
+        <div class="col-md-8 pt-1">
+            <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+                <h2 class="display-4 font-italic">
+                    <img class="rounded-circle d-md-show" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/mural_fofura2.svg" alt="mura_fofura" width="140" height="140">
+                    Mural Fofura
+                </h2>
+                <p class="my-3">Confira nossos animais para adoção.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% if documents %}
+{% for document in documents %}
+    <div class="row justify-content-center m-1"> 
+        <div class="col-md-8">
+            <div class="card flex-lg-row mb-4 shadow h-lg-250">
+                <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px;" src="{{ document.docfile.url }}" data-holder-rendered="true">
+                <div class="card-body d-flex">
+                    <h3 class="mb-0 w-100">
+                        <span class="material-icons-round">pets</span>
+                        {{ document.nome_cachorro }}
+                    </h3>
+                    <p class="card-text mb-auto w-100">Porte: {{ document.porte_cachorro }}</p>
+                    <p>
+                        <span class="material-icons-round">category</span>
+                        Tipo: {{ document.tipo }}
+                    </p>
+                </div>
+  
+                <div>
+                    Idade do cachorro: {{ document.idade_cachorro }}
+                </div>
+                <div>
+                    <span class="material-icons-round">description</span>
+                    Descrição: {{ document.descricao|safe|escape }}
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z"/></svg>
+                    Sexo: {{ document.sexo }}
+                </div>
+                <div>
+                    Porte: {{ document.porte }}
+                </div>
+                <div>
+
+                </div>
+                <div>
+                    Data de nascimento: {{ document.data_nascimento }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="row justify-content-center m-1"> 
+        <div class="col-md-8">
+            <div class="card flex-lg-row mb-4 shadow h-lg-250">
+                <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px;" src="{{ document.docfile.url }}" data-holder-rendered="true">
+                <div class="card-body d-flex">
+                    <span class="material-icons-round">pets</span>
+                    <h3 class="mb-0 w-100">
+                        
+                        {{ document.nome_cachorro }}
+                    </h3>
+                    <p>
+                        <span class="material-icons-round">category</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-checks-grid" viewBox="0 0 16 16"><path d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z"/></svg>
+                        Tipo: {{ document.tipo }}
+                    </p>
+                </div>
+                <div>
+                    <span class="material-icons-round">description</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/><path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/></svg>
+                    Descrição: {{ document.descricao|safe|escape }}
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z"/></svg>
+                    Sexo: {{ document.sexo }}
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16"><path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z"/></svg>
+                    Porte: {{ document.porte }}
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
+                    Data de nascimento: {{ document.data_nascimento }}
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">                        <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z"/></svg>
+                    Especie: {{ document.especie }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

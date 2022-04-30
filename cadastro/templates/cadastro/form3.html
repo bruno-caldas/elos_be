@@ -1,0 +1,147 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+  <div class="col-auto">
+    <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Univesp e Kaotinho" width="90px">
+  </div>
+  <div class="col-md-8 text-white">
+    <h2 class="display-5 font-italic">Mural Fofura</h1>
+    <p class="lead">Confira os animais para adoção.</p>
+  </div>
+</div><!-- Fim do cabeçalho-->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center">
+    <div class="col-md-8 border-secondy">
+      <ul class="nav nav-tabs border-secondy" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="univesp-tab" data-bs-toggle="tab" data-bs-target="#univesp" type="button" role="tab" aria-controls="univesp" aria-selected="true">A Universidade</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pi-tab" data-bs-toggle="tab" data-bs-target="#pi" type="button" role="tab" aria-controls="pi" aria-selected="false">O projeto</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="kaotinho-tab" data-bs-toggle="tab" data-bs-target="#kaotinho" type="button" role="tab" aria-controls="kaotinho" aria-selected="false">O abrigo</button>
+        </li>
+      </ul>
+      <div class="tab-content p-3 border-secondary shadow" id="myTabContent">
+        <div class="tab-pane fade show active justify-content-between" id="univesp" role="tabpanel" aria-labelledby="univesp-tab">
+          <h3 class="fs-3">A UniVESP</h3>
+          <p class="text-xs-right"">A Universidade Virtual do Estado de São Paulo (Univesp) é a quarta universidade pública paulista, exclusivamente de educaçao à distância. E tem por objetivo o ensino, a pesquisa e a extensão, obedecendo ao princípio de sua indissociabilidade, integrados pelo conhecimento como bem público. Ela se constitui como universidade dedicada à formação de educadores – para a universalização do acesso à educação formal e à educação para cidadania, assim como a de outros profissionais comprometidos com o bem-estar social e cultural da população.</p>
+          <h3 class="fs-3">Principais parceiros</h3>
+          <p>Entre seus principais parceiros destacam-se a  Universidade de São Paulo (USP), Universidade Estadual Paulista (UNESP), Universidade Estadual de Campinas (UNICAMP) e Centro Paula Souza (CPS).</p>
+          <a href="https://univesp.br/" target="_blank">Fonte: Site UniVESP</a>
+        </div>
+        <div class="tab-pane fade" id="pi" role="tabpanel" aria-labelledby="pi-tab">
+          <h3 class="fs-3">A Disciplina</h3>
+          <p>A disciplina "Projeto Integrador", trata-se de uma atividade curricular obrigatória que consiste na resolução de um problema real contextualizado na profissão em que o curso está inserido.</p>
+          <p>Em grupo, os estudantes devem delimitar um problema a partir do tema norteador da disciplina, propondo uma solução aplicável, usando os conhecimentos estudados nas disciplinas cursadas até o momento.</p>
+          <a href="https://apps.univesp.br/o-que-e-projeto-integrador/" target="_blank">Fonte: REA</a>
+          <h3 class="fs-3">O Tema</h3>
+          <p>Desenvolver um software com framework web (Django) que utilize noções de banco de dados (PostgreSQL), praticando controle de versão (git e gitHUB).</p>
+          <h3 class="fs-3">O grupo</h3>
+          <p>Os alunos, Bruno Caldas de Souza, Eduardo Cabral de Souza e Vinícius Gomes Barbosa, do Eixo Computação - Turma 2020 entraram em contato com algumas instituições. E adotaram a causa e o desafio apresentado pelo Projeto Kãotinho.</p>
+        </div>
+        <div class="tab-pane fade" id="kaotinho" role="tabpanel" aria-labelledby="kaotinho-tab">
+          <h3 class="fs-3">O que é o projeto Kãotinho no Coração?</h3>
+          <p>É um projeto de proteção, cujo objetivo é resgatar e recuperar animais abandonados ou que estejam sofrendo maus-tratos.</p>
+          <p>O nosso projeto é independente e sem fins lucrativos, não estamos envolvidos com ONGs nem com empresas. No entanto, estamos abertos à realização de parcerias, desde que elas respeitem nossos valores e o bem estar dos animais!</p>
+          <h3 class="fs-3">Como Surgiu?</h3>
+          <p>O grupo surgiu a partir da união de voluntários, que se conheceram pela internet e resolveram reunir forças para acabar com o sofrimento dos animais que viviam num abrigo em condições precárias. Depois de mais de seis meses, o grupo continuou unido e tomou uma dimensão maior, por isso, resolvemos criar um projeto de proteção, para que possamos dar visibilidade e continuidade ao trabalho que iniciamos no fim do ano passado.</p>
+          <a class="btn btn-secondary" href="{% url 'ajuda' %}" role="button">Como ajudar?</a>
+          <a class="btn btn-secondary" href="{% url 'contatos' %}" role="button">Contatos e Redes Sociais</a>
+        </div>
+      </div>
+    </div>  
+  </div><!-- Fim do Conteúdo principal -->
+
+  {% if documents %}
+  {% for document in documents %}
+      <div class="row justify-content-center m-1"> 
+          <div class="col-md-8">
+              <div class="card flex-lg-row mb-4 shadow h-lg-250">
+                  <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px;" src="{{ document.docfile.url }}" data-holder-rendered="true">
+                  <div class="card-body d-flex">
+                      <h3 class="mb-0 w-100">
+                          <span class="material-icons-round">pets</span>
+                          {{ document.nome_cachorro }}
+                      </h3>
+                      <p class="card-text mb-auto w-100">Porte: {{ document.porte_cachorro }}</p>
+                      <p>
+                          <span class="material-icons-round">category</span>
+                          Tipo: {{ document.tipo }}
+                      </p>
+                  </div>
+    
+                  <div>
+                      Idade do cachorro: {{ document.idade_cachorro }}
+                  </div>
+                  <div>
+                      <span class="material-icons-round">description</span>
+                      Descrição: {{ document.descricao|safe|escape }}
+                  </div>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z"/></svg>
+                      Sexo: {{ document.sexo }}
+                  </div>
+                  <div>
+                      Porte: {{ document.porte }}
+                  </div>
+                  <div>
+  
+                  </div>
+                  <div>
+                      Data de nascimento: {{ document.data_nascimento }}
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="row justify-content-center m-1"> 
+          <div class="col-md-8">
+              <div class="card flex-lg-row mb-4 shadow h-lg-250">
+                  <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px;" src="{{ document.docfile.url }}" data-holder-rendered="true">
+                  <div class="card-body d-flex">
+                      <span class="material-icons-round">pets</span>
+                      <h3 class="mb-0 w-100">
+                          
+                          {{ document.nome_cachorro }}
+                      </h3>
+                      <p>
+                          <span class="material-icons-round">category</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-checks-grid" viewBox="0 0 16 16"><path d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z"/></svg>
+                          Tipo: {{ document.tipo }}
+                      </p>
+                  </div>
+                  <div>
+                      <span class="material-icons-round">description</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/><path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/></svg>
+                      Descrição: {{ document.descricao|safe|escape }}
+                  </div>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z"/></svg>
+                      Sexo: {{ document.sexo }}
+                  </div>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16"><path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z"/></svg>
+                      Porte: {{ document.porte }}
+                  </div>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
+                      Data de nascimento: {{ document.data_nascimento }}
+                  </div>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">                        <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z"/></svg>
+                      Especie: {{ document.especie }}
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

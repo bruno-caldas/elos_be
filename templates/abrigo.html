@@ -1,0 +1,68 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Univesp e Kaotinho" width="300px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Kãotinho no coração e alunos UniVESP</h1>
+      <p class="lead">Saiba mais como surgiu essa parceria.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center">
+    <div class="col-md-8 border-secondy">
+      <ul class="nav nav-tabs border-secondy" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="univesp-tab" data-bs-toggle="tab" data-bs-target="#univesp" type="button" role="tab" aria-controls="univesp" aria-selected="true">A Universidade</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pi-tab" data-bs-toggle="tab" data-bs-target="#pi" type="button" role="tab" aria-controls="pi" aria-selected="false">O projeto</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="kaotinho-tab" data-bs-toggle="tab" data-bs-target="#kaotinho" type="button" role="tab" aria-controls="kaotinho" aria-selected="false">O abrigo</button>
+        </li>
+      </ul>
+      <div class="tab-content p-3 border-secondary shadow" id="myTabContent">
+        <div class="tab-pane fade show active justify-content-between" id="univesp" role="tabpanel" aria-labelledby="univesp-tab">
+          <h3 class="fs-3">A UniVESP</h3>
+          <p class="text-xs-right"">A Universidade Virtual do Estado de São Paulo (Univesp) é a quarta universidade pública paulista, exclusivamente de educaçao à distância. E tem por objetivo o ensino, a pesquisa e a extensão, obedecendo ao princípio de sua indissociabilidade, integrados pelo conhecimento como bem público. Ela se constitui como universidade dedicada à formação de educadores – para a universalização do acesso à educação formal e à educação para cidadania, assim como a de outros profissionais comprometidos com o bem-estar social e cultural da população.</p>
+          <h3 class="fs-3">Principais parceiros</h3>
+          <p>Entre seus principais parceiros destacam-se a  Universidade de São Paulo (USP), Universidade Estadual Paulista (UNESP), Universidade Estadual de Campinas (UNICAMP) e Centro Paula Souza (CPS).</p>
+          <a href="https://univesp.br/" target="_blank">Fonte: Site UniVESP</a>
+        </div>
+        <div class="tab-pane fade" id="pi" role="tabpanel" aria-labelledby="pi-tab">
+          <h3 class="fs-3">A Disciplina</h3>
+          <p>A disciplina "Projeto Integrador", trata-se de uma atividade curricular obrigatória que consiste na resolução de um problema real contextualizado na profissão em que o curso está inserido.</p>
+          <p>Em grupo, os estudantes devem delimitar um problema a partir do tema norteador da disciplina, propondo uma solução aplicável, usando os conhecimentos estudados nas disciplinas cursadas até o momento.</p>
+          <a href="https://apps.univesp.br/o-que-e-projeto-integrador/" target="_blank">Fonte: REA</a>
+          <h3 class="fs-3">O Tema</h3>
+          <p>Desenvolver um software com framework web (Django) que utilize noções de banco de dados (PostgreSQL), praticando controle de versão (git e gitHUB).</p>
+          <h3 class="fs-3">O grupo</h3>
+          <p>Os alunos, Bruno Caldas de Souza, Eduardo Cabral de Souza e Vinícius Gomes Barbosa, do Eixo Computação - Turma 2020 entraram em contato com algumas instituições. E adotaram a causa e o desafio apresentado pelo Projeto Kãotinho.</p>
+          <iframe class="img-fluid" width="560" height="315" src="https://www.youtube.com/embed/wfxonQk92bQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="tab-pane fade" id="kaotinho" role="tabpanel" aria-labelledby="kaotinho-tab">
+          <h3 class="fs-3">O que é o projeto Kãotinho no Coração?</h3>
+          <p>É um projeto de proteção, cujo objetivo é resgatar e recuperar animais abandonados ou que estejam sofrendo maus-tratos.</p>
+          <p>O nosso projeto é independente e sem fins lucrativos, não estamos envolvidos com ONGs nem com empresas. No entanto, estamos abertos à realização de parcerias, desde que elas respeitem nossos valores e o bem estar dos animais!</p>
+          <h3 class="fs-3">Como Surgiu?</h3>
+          <p>O grupo surgiu a partir da união de voluntários, que se conheceram pela internet e resolveram reunir forças para acabar com o sofrimento dos animais que viviam num abrigo em condições precárias. Depois de mais de seis meses, o grupo continuou unido e tomou uma dimensão maior, por isso, resolvemos criar um projeto de proteção, para que possamos dar visibilidade e continuidade ao trabalho que iniciamos no fim do ano passado.</p>
+          <iframe class="img-fluid" width="560" height="315" src="https://www.youtube.com/embed/SVxT4rmfHK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div>
+            <a class="btn btn-secondary" href="{% url 'ajuda' %}" role="button">Como ajudar?</a>
+            <a class="btn btn-secondary" href="{% url 'contatos' %}" role="button">Contatos e Redes Sociais</a>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}

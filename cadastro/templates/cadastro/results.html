@@ -1,0 +1,17 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+<h2>{{ question.question_text }}</h2>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} => quantidade{{ choice.votes|pluralize }} = {{ choice.votes }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'cadastro:detail' question.id %}">Cadastre mais deste tipo de material?</a>
+<br>
+<a href="{% url 'cadastro:index' %}">Cadastre mais produtos?</a>
+
+{% endblock %}

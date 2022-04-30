@@ -1,0 +1,30 @@
+@media(min-width:411px){
+    #titulo {
+        font-size: fs-5;
+    }
+}
+
+.barra-inferior {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 0.05rem solid #e5e5e5;
+    display: block;
+}
+
+.univesp-kaotinho {
+    object-fit: scale-down;
+}
+
+.img-carrossel {
+    object-fit: contain;
+}
+
+body {
+    box-sizing: content-box;
+  }
+
+p {
+    text-align: justify;
+}

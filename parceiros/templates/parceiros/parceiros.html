@@ -1,0 +1,42 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Nossos Parceiros</h1>
+      <p class="lead">Confira os parceiros do projeto.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy">
+      {% for parceiro in parceiros %}
+      <div class="card mt-2 shadow">
+        <div class="card-header bg-secondary align-middle text-white">
+          <span class="material-icons align-middle fs-5">business</span>
+          <span class="align-middle fs-5">{{ parceiro.nome_parceiro }}</span>
+        </div>
+        <div class="row card-body">
+          <div class="col-auto">
+            <span class="material-icons fs-6">description</span>
+          </div>
+          <div class="col">
+            <p class="card-text">{{ parceiro.descricao_parceiro }}</p>
+            <a href="{{ parceiro.site_parceiro }}" class="btn btn-secondary" target="_blank">Confira aqui!</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div><!-- Fim row-->
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}

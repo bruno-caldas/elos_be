@@ -1,0 +1,63 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/ajuda3.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Como ajudar?</h1>
+      <p class="lead">Confira como apoiar nosso projeto.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+
+<!-- Corpo do site -->
+<div class="row justify-content-center mt-0">
+  <div class="col-md-8 border-secondy justify-content-start">
+    <div class="accordion-item">
+      <h4 class="accordion-header" id="flush-heading-ajuda">
+        <button class="accordion-button collapsed bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-ajuda" aria-expanded="false" aria-controls="flush-collapse-ajuda">
+          Como posso ajudar?
+        </button>
+      </h4>
+      <div id="flush-collapse-ajuda" class="accordion-collapse collapse" aria-labelledby="flush-heading-ajuda" data-bs-parent="#duvida">
+        <div class="accordion-body">
+          Você pode ajudar doando dinheiro, ração, medicamentos, roupinhas, caminhas, casinhas, cobertores, petiscos, produtos de limpeza e produtos para pets em geral.
+          Você também pode se unir ao nosso grupo como voluntário!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header" id="flush-heading-dinheiro">
+        <button class="accordion-button collapsed bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-dinheiro" aria-expanded="false" aria-controls="flush-collapse-dinheiro">
+          Para que vocês precisam de dinheiro?
+        </button>
+      </h4>
+      <div id="flush-collapse-dinheiro" class="accordion-collapse collapse" aria-labelledby="flush-heading-dinheiro" data-bs-parent="#duvida">
+        <div class="accordion-body">
+          Os animais que chegam até nós, geralmente, estão debilitados, desnutridos e em péssimas condições de saúde, apresentando desde sarna, pulgas, verminoses, doença do carrapato, bicheiras, até de tumores e doenças venéreas. Muitos foram espancados, torturados, atropelados. É um verdadeiro horror, não sabemos de onde esses bichinhos tiram forças para continuar vivos, por isso, por pior que seja o estado dos animais, não desistimos deles. No entanto, eles só podem ser doados depois que estiverem completamente curados, em boas condições de saúde, castrados e vacinados.
+          Mas para que possamos atuar na recuperação física e emocional dos animais, precisamos de dinheiro, que, muitas vezes, sai de nossos próprios bolsos .
+          Por isso, para que o nosso trabalho continue, sua doação é muito importante!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header" id="flush-heading-amigo">
+        <button class="accordion-button collapsed bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-amigo" aria-expanded="false" aria-controls="flush-collapse-amigo">
+          Quero adotar um amigo!
+        </button>
+      </h4>
+      <div id="flush-collapse-amigo" class="accordion-collapse collapse" aria-labelledby="flush-heading-amigo" data-bs-parent="#duvida">
+        <div class="accordion-body">
+          Ótimo! O nosso maior sonho é que nossos animais encontrem um lar! Nós vamos te ajudar a escolher um bichinho que combine com você e com a sua família.
+          No entanto, valorizamos o bem-estar dos animais, portanto, temos um processo rigoroso de entrevista com nossos adotantes, para ter certeza de que eles vão para um lugar seguro, onde serão amados e bem tratados. Não podemos correr o risco de que eles voltem a sofrer novamente.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
