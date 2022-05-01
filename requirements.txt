@@ -11,3 +11,5 @@ dj-database-url
 boto3
 django-storages
 django-richtextfield
+djangorestframework
+django-cors-headers
