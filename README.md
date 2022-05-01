@@ -13,6 +13,7 @@ Todo
 - Bruno Caldas de Souza
 - Eduardo Cabral de Souza
 - Vinicius Gomes Barbosa
+- Robson Fabio Nunes de Oliveira
 - Por favor coloquem todos aqui!
 
 ## O site ao vivo se encontra em:
