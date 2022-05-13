@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, sys
 import django_heroku
 import dj_database_url
 
@@ -209,3 +209,8 @@ DJRICHTEXTFIELD_CONFIG = {
         ],
     }
 }
+
+
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps'))
+
