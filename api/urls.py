@@ -1,9 +1,9 @@
 from django.urls import include, path
-from . import views
+from .views import *
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'', views.controleParceiros)
+router.register(r'',views.controleParceiros)
 
 urlpatterns = [
     # path('', views.getData),
