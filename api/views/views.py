@@ -1,9 +1,12 @@
+from django.apps import apps
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import viewsets
 from rest_framework import permissions
+
 from parceiros.models import Parceiros
-from .serializers import ParceirosSerializer
+#./apps.arceiros.models import Parceiros
+from ..serializers import *
 
 # Easy way of controling the API
 # @api_view(['GET'])

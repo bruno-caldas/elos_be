@@ -13,3 +13,4 @@ django-storages
 django-richtextfield
 djangorestframework
 django-cors-headers
+django-filter

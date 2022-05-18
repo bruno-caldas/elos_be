@@ -1,9 +1,13 @@
 from django.urls import include, path
-from . import views
 from rest_framework import routers
 
+#from api.views.carrega_parceiros import ParceirosViewSet
+from .views import *
+
 router = routers.DefaultRouter()
-router.register(r'', views.controleParceiros)
+#router.register(r'',views.controleParceiros)
+router.register('parceiros', ParceirosViewSet, basename='Parceiros')
+router.register('eventos', EventosViewSet, basename='Eventos')
 
 urlpatterns = [
     # path('', views.getData),
