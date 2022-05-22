@@ -74,7 +74,9 @@ INSTALLED_APPS = [
     'eventos',
     'parceiros',
     'rede_social',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth'
 ]
 
 MIDDLEWARE = [

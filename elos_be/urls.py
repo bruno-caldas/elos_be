@@ -40,4 +40,5 @@ urlpatterns = [
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
     path('login/', include("login_users.urls")),
+    path('pi-auth/', include('dj_rest_auth.urls')),
 ]

@@ -14,3 +14,4 @@ django-richtextfield
 djangorestframework
 django-cors-headers
 django-filter
+dj-rest-auth
