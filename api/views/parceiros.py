@@ -14,4 +14,4 @@ class ParceirosViewSet(viewsets.ModelViewSet):
     ordering_fields = ['nome_parceiro']
     search_fields = ['nome_parceiro']
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
