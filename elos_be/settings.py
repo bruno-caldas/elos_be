@@ -60,6 +60,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
 INSTALLED_APPS = [
     'cadastro.apps.CadastroConfig',
     'login_users',
@@ -75,8 +81,7 @@ INSTALLED_APPS = [
     'parceiros',
     'rede_social',
     'rest_framework',
-    'rest_framework.authtoken',
-    'dj_rest_auth'
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [

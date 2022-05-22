@@ -24,6 +24,11 @@ from cadastro import views
 from eventos import urls, views
 from parceiros import urls, views
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 app_name = 'elos_be'
 urlpatterns = [
     #path('', include('cadastro.urls')),
@@ -40,5 +45,6 @@ urlpatterns = [
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
     path('login/', include("login_users.urls")),
-    path('pi-auth/', include('dj_rest_auth.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
