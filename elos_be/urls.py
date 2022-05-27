@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
+from django.conf.urls import url, include
 import parceiros
 
 from elos_be.views import carrega_abrigo, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate
@@ -24,10 +25,16 @@ from cadastro import views
 from eventos import urls, views
 from parceiros import urls, views
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+
+
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from rest_framework import routers
+from doadores.api import viewsets as doadoresviewsets
+
+route = routers.DefaultRouter()
+
+route.register(r'doadores', doadoresviewsets.DoadoresViewSet, basename="Doadores")
 
 app_name = 'elos_be'
 urlpatterns = [
@@ -45,6 +52,9 @@ urlpatterns = [
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
     path('login/', include("login_users.urls")),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
+    url(r'^', include('doadores.urls')),
+    path('', include(route.urls))
+    
 ]

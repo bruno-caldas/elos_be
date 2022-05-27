@@ -8,10 +8,11 @@ from api.serializers import EventoSerializer
 
 class EventosViewSet(viewsets.ModelViewSet):
     """Listando todos os eventos"""
+    permission_classes = (IsAuthenticated)
     queryset = Evento.objects.all()
     serializer_class = EventoSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome_evento','data_evento']
     search_fields = ['nome_evento']
     # authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    

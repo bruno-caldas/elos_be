@@ -8,10 +8,11 @@ from api.serializers import ParceiroSerializer
 
 class ParceirosViewSet(viewsets.ModelViewSet):
     """Listando todos os parceiros"""
+    permission_classes = (IsAuthenticated)
     queryset = Parceiros.objects.all()
     serializer_class = ParceiroSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome_parceiro']
     search_fields = ['nome_parceiro']
     authentication_classes = [BasicAuthentication]
-    permission_classes = [AllowAny]
+    
