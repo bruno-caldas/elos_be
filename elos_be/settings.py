@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os, sys
+from telnetlib import AUTHENTICATION
 import django_heroku
 import dj_database_url
 from datetime import timedelta
+
+#import login_users
 
 on_heroku = os.getenv('ON_HEROKU', 'False')
 if on_heroku == "True": on_heroku = True
@@ -72,8 +75,15 @@ REST_FRAMEWORK = {
 }
 
 INSTALLED_APPS = [
+    # login
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'usuarios.apps.UsuariosConfig',
+
     'cadastro.apps.CadastroConfig',
-    'login_users',
+    #'login_users',
     'djrichtextfield',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,6 +91,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'storages',
     'eventos',
     'parceiros',
@@ -88,6 +99,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'doadores.apps.DoadoresConfig',
+    'crispy_forms',
 
 ]
 
@@ -265,4 +277,16 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+
 }
+
+AUTHENTICATION_BACKENDS = (
+
+'django.contrib.auth.backends.ModelBackend',
+'allauth.account.auth_backends.AuthenticationBackend',
+
+)
+ 
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = "/"

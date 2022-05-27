@@ -25,7 +25,7 @@ from cadastro import views
 from eventos import urls, views
 from parceiros import urls, views
 
-
+from django.views.generic import TemplateView
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -51,10 +51,12 @@ urlpatterns = [
     path('abrigo/parceiros',include("parceiros.urls")),
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
-    path('login/', include("login_users.urls")),
+    path('login/', include("usuarios.urls")),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
     url(r'^', include('doadores.urls')),
-    path('', include(route.urls))
+    path('', include(route.urls)),
+    path('accounts/', include('allauth.urls')),
+    path('', TemplateView.as_view(template_name="usuarios/index.html")),
     
 ]
