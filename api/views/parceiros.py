@@ -14,5 +14,10 @@ class ParceirosViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome_parceiro']
     search_fields = ['nome_parceiro']
+<<<<<<< HEAD
     authentication_classes = [BasicAuthentication]
     
+=======
+    # authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+>>>>>>> c380b57 (forcing athenticated frontend)
