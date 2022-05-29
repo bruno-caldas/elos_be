@@ -13,5 +13,5 @@ class ParceirosViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome_parceiro']
     search_fields = ['nome_parceiro']
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [AllowAny]
+    # authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
