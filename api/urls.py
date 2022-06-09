@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 #router.register(r'',views.controleParceiros)
 router.register('parceiros', ParceirosViewSet, basename='Parceiros')
 router.register('eventos', EventosViewSet, basename='Eventos')
+router.register('blog', PostViewSet, basename='Blog')
 
 urlpatterns = [
     # path('', views.getData),
