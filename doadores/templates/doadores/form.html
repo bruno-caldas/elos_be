@@ -1,0 +1,54 @@
+{% extends 'templates/../home.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block rodape-links %}
+{% endblock %}
+
+{% block conteudo %}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        {% if request.user.is_authenticated %}
+        <h3>
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+            Acesso Não Permitido</h3>
+        <hr>
+        <p class="lead">
+            <strong>
+                Usuário não possui acesso ao modulo de cadastro
+            </strong>
+        </p> 
+
+        {% else %}
+        <h3>Login de Voluntários</h3>
+
+        <hr>
+        
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <br />
+
+            <button type="submit" class="btn btn-success">Acessar</button>
+
+        </form>
+        {% endif %}
+    </div>
+  </div>
+
+{% endblock %}
+
+

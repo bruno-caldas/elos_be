@@ -60,5 +60,46 @@
         </li>
       </ul>
     </div><!-- Fim Menu -->
-  </div>
-</nav>
+    <!-- Cadastro  -->
+    
+    <ul class="navbar-nav">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navSocial">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+        <!--data-toggle="dropdown" id="navSocial">-->
+          <span id="username">{{ request.user }}</span>
+          
+        </a>
+        <div class="dropdown-menu">
+          <a class="nav-link" href="{% url 'login' %}">
+            Login
+          </a>
+          <a class="nav-link" href="{% url 'signup' %}">
+            Inscreva-se
+          </a>
+          <a class="nav-link" href="{% url 'logout' %}">
+            Sair
+          </a>
+    </div>
+    {% else %}
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            Acesse  
+               
+        </a>
+        <div class="dropdown-menu">
+          <a class="nav-link" href="{% url 'login' %}">
+          Login
+          </a>
+          <a class="nav-link" href="{% url 'signup' %}">
+          Inscreva-se
+          </a>
+    </div>
+    
+    {% endif %}
+
+  </nav>

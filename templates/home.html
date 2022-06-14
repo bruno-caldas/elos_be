@@ -1,0 +1,242 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="pt-br" class="h-100">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Projeto Integrador II">
+
+    {% block titulo %}
+    <title>:: ELOS DE AMOR ::</title>
+    {% endblock %}
+
+    <!-- Ícone do favicon -->
+    <link href="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" rel="shortcut icon" type="image/x-icon" />
+   
+
+    
+
+
+    <!-- Importação do Bootstrap 4 e do Font awesome -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- CSS adicional -->
+    <link href="{% static 'css/simec.css' %}" rel="stylesheet">
+
+    <!-- Importação do Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css" />
+
+    <!-- Ícone na barra de abas -->
+    <!-- <link rel="shortcut icon" href="{% static 'img/sgr.jpg' %}"> -->
+
+    <!-- Bloco destinado aos estilos para cada página -->
+    {% block styles %}
+
+    {% endblock %}
+
+</head>
+
+<body class="d-flex flex-column h-100">
+    <main role="main" class="flex-shrink-0">
+
+
+        <!-- Bloco com a logo da cidade -->
+        {% block logo %}
+        <!-- <div class="container-fluid bg-white">
+            <div class="container border-bottom border-light p-3">
+                <img src="{% static 'img/logosimec.jpg' %}" alt="" style="max-height: 65px;" class="img-fluid">
+            </div>
+        </div> -->
+        {% endblock %}
+        
+        <!-- Bloco com o menu principal -->
+        {% block menu %}
+        <nav class="navbar navbar-expand-lg bg-sgsl font-115 shadow">
+
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" height="40" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                Início
+                            </a>
+                        </li>
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item" href="">Colaborador</a>
+                                <a class="dropdown-item" href="">Doação</a>
+                                <div class="dropdown-divider"></div>
+                                <!-- <a class="dropdown-item" href="">Situações</a> -->
+                                <!--<a class="dropdown-item" href="">Classes</a>-->
+                                <!--<a class="dropdown-item" href="">Progressões</a>-->
+                                <!--<a class="dropdown-item" href="">Campos</a>-->
+                                <!--<a class="dropdown-item" href="">Atividades</a>-->
+                                <!--<a class="dropdown-item" href="">Comprovantes</a>-->
+
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                Registros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item" href="">Pedido</a>
+                                 <!-- <a class="dropdown-item" href="">Gerencia</a>-->
+                                 <!-- <a class="dropdown-item" href="">Area</a>-->
+                                 <!-- <a class="dropdown-item" href="">Local</a>-->
+                                <div class="dropdown-divider"></div>
+                                <!-- <a class="dropdown-item" href="">Situações</a> -->
+                                <!--<a class="dropdown-item" href="">Classes</a>-->
+                                <!--<a class="dropdown-item" href="">Progressões</a>-->
+                                <!--<a class="dropdown-item" href="">Campos</a>-->
+                                <!--<a class="dropdown-item" href="">Atividades</a>-->
+                                <!--<a class="dropdown-item" href="">Comprovantes</a>-->
+
+                            </div>
+                        </li>
+                        {% endif %}
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Sobre
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                Ajuda
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                <span id="username">{{ request.user }}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    Meus dados</a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                    Alterar senha</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    Sair</a>
+                            </div>
+                        </li>
+                        
+                        {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'signup' %}">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                Inscreva-se
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                Login
+                            </a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+
+                <!-- fim do container -->
+            </div>
+        </nav>
+        {% endblock %}
+
+
+        <!-- Bloco de conteúdo -->
+        <div class="container py-0">
+            {% block conteudo %}
+            <br />
+            <h3>Página inicial</h3>
+            {% endblock %}
+        </div>
+
+    </main>
+
+    <footer class="mt-auto">
+
+        <!-- Bloco acima do rodapé com links -->
+        {% block rodape-links %}
+        
+        {% endblock %}
+
+
+        <!-- Rodapé -->
+        {% block rodape %}
+        <div class="container-fluid bg-light text-center p-3">
+            <div class="row">
+                <div class="col-md-4 mx-auto text-center">
+                    <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" height="48" class="float-left" alt="">
+                    
+                    <p>
+                        <span class="lead">Elos de Amor</span><br>
+                        <span>Desenvolvido por Alunos UUNIVESP</span>
+                    </p>
+                </div>
+                <!-- <div class="col-md text-left">
+                    <img src="{% static 'img/logosimec.jpg' %}" height="100" alt="">
+                </div> -->
+
+                </p>
+            </div>
+            {% endblock %}
+
+    </footer>
+
+
+    <!-- Importação do JS -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+
+    <!-- Bloco destinado aos scripts para cada página -->
+    {% block scripts %}
+
+    {% endblock %}
+
+</body>
+
+</html>

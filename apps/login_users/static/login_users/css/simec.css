@@ -1,0 +1,101 @@
+
+/* 
+Cores do sgsl 
+*/
+.bg-sgsl {
+    background-color: #929a9b00;
+}
+
+.text-sgsl {
+    color: #b81b1b;
+}
+
+.border-sgsl {
+    border-color: #eae602;
+}
+.bg-sgsl-escuro {
+    background-color: #000000;
+}
+
+.text-sgsl-escuro {
+    color: #c51010;
+}
+
+.border-sgsl-escuro {
+    border-color: #a90783;
+}
+
+
+/* 
+Tamanhos diferentes para fontes 
+*/
+.font-75 {
+    font-size: 75%;
+}
+
+.font-115 {
+    font-size: 115%;
+}
+
+.font-125 {
+    font-size: 125%;
+}
+
+.font-150 {
+    font-size: 150%;
+}
+
+.font-175 {
+    font-size: 175%;
+}
+
+
+/* 
+Formatação do DataTable 
+*/
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child::before {
+    top: 15px !important;
+}
+
+
+/* 
+Personalização da Barra de menu pra ficar igual do site 
+*/
+.navbar {
+    padding: 0 !important;
+}
+
+.navbar .navbar-brand{
+    padding-left: 10px;
+}
+
+.navbar a.nav-link{
+    color: rgba(162, 149, 149, 0.13) !important;
+}
+
+.navbar .nav-item{
+    padding: 3px 5px;
+}
+
+.navbar .nav-item:hover{
+    background-color: #eb19c8;
+}
+
+
+/* 
+Alerta na validação dos formulários (login com senha errada, por exemplo) 
+*/
+.alert dl, .alert ol, .alert ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/*
+Largura máxima das tabelas para não ficar mal formatada
+*/
+table td{
+    max-width: 500px;
+}
+/* © 2022 GitHub, Inc. */
