@@ -1,0 +1,36 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Via Cep</h1>
+      <p class="lead">Confira os parceiros do projeto.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy">
+      <form action="{% url 'rede_social:via_cep' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-12 col-lg-12">
+            <label>
+              <input type="text" id="cep" name="cep" placeholder="Digite seu CEP">
+            </label>
+              <button class="btn btn-sucess" type="submit">Consulte</button>
+          </div>
+        </div>
+      </form>
+    </div><!-- Fim row-->
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}

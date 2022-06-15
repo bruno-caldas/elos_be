@@ -1,5 +1,9 @@
 {
     "python.analysis.extraPaths": [
+<<<<<<< HEAD
         "./apps"
+=======
+        "./api/serializers"
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
     ]
 }

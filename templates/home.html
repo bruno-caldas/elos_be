@@ -8,6 +8,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+<<<<<<< HEAD
     <meta name="author" content="GRUPO 24 - PI - 2">
 
     {% block titulo %}
@@ -18,6 +19,19 @@
     <div class="col-auto">
         <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Univesp e Elos de Amor" width="300px">
     </div>
+=======
+    <meta name="author" content="Projeto Integrador II">
+
+    {% block titulo %}
+    <title>:: ELOS DE AMOR ::</title>
+    {% endblock %}
+
+    <!-- Ícone do favicon -->
+    <link href="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" rel="shortcut icon" type="image/x-icon" />
+   
+
+    
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 
 
     <!-- Importação do Bootstrap 4 e do Font awesome -->
@@ -26,9 +40,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- CSS adicional -->
+<<<<<<< HEAD
     <div class="col-auto">
         <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Univesp e Elos de Amor" width="300px">
     </div>
+=======
+    <link href="{% static 'css/simec.css' %}" rel="stylesheet">
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 
     <!-- Importação do Datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css" />
@@ -58,12 +76,21 @@
         
         <!-- Bloco com o menu principal -->
         {% block menu %}
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-lg navbar-dark bg-sgsl font-115 shadow">
 
             <div class="container">
                 <div class="col-auto">
                     <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Univesp e Elos de Amor" width="300px">
                   </div>
+=======
+        <nav class="navbar navbar-expand-lg bg-sgsl font-115 shadow">
+
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" height="40" alt="">
+                </a>
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -72,7 +99,11 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="nav-link" href="{% url 'inicio' %}">
+=======
+                            <a class="nav-link" href="{% url 'index' %}">
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                                 <i class="fa fa-home" aria-hidden="true"></i>
                                 Início
                             </a>
@@ -80,7 +111,11 @@
 
                         {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown">
+<<<<<<< HEAD
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+=======
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 Cadastros
@@ -88,9 +123,13 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                 <a class="dropdown-item" href="">Colaborador</a>
+<<<<<<< HEAD
                                 <a class="dropdown-item" href="">Gerencia</a>
                                 <a class="dropdown-item" href="">Area</a>
                                 <a class="dropdown-item" href="">Local</a>
+=======
+                                <a class="dropdown-item" href="">Doação</a>
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                                 <div class="dropdown-divider"></div>
                                 <!-- <a class="dropdown-item" href="">Situações</a> -->
                                 <!--<a class="dropdown-item" href="">Classes</a>-->
@@ -103,17 +142,28 @@
                         </li>
 
                         <li class="nav-item dropdown">
+<<<<<<< HEAD
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+=======
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdownMenuLink"
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 Registros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
+<<<<<<< HEAD
                                 <a class="dropdown-item" href="">Relatar Legal</a>
                                  <!-- <a class="dropdown-item" href="{% url 'cadastrar-gerencia' %}">Gerencia</a>-->
                                  <!-- <a class="dropdown-item" href="{% url 'cadastrar-area' %}">Area</a>-->
                                  <!-- <a class="dropdown-item" href="{% url 'cadastrar-local' %}">Local</a>-->
+=======
+                                <a class="dropdown-item" href="">Pedido</a>
+                                 <!-- <a class="dropdown-item" href="">Gerencia</a>-->
+                                 <!-- <a class="dropdown-item" href="">Area</a>-->
+                                 <!-- <a class="dropdown-item" href="">Local</a>-->
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                                 <div class="dropdown-divider"></div>
                                 <!-- <a class="dropdown-item" href="">Situações</a> -->
                                 <!--<a class="dropdown-item" href="">Classes</a>-->
@@ -165,9 +215,15 @@
                         
                         {% else %}
                         <li class="nav-item ">
+<<<<<<< HEAD
                             <a class="nav-link" href="">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 Registrar
+=======
+                            <a class="nav-link" href="{% url 'signup' %}">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                Inscreva-se
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -188,8 +244,14 @@
 
 
         <!-- Bloco de conteúdo -->
+<<<<<<< HEAD
         <div class="container py-5">
             {% block conteudo %}
+=======
+        <div class="container py-0">
+            {% block conteudo %}
+            <br />
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
             <h3>Página inicial</h3>
             {% endblock %}
         </div>
@@ -200,6 +262,7 @@
 
         <!-- Bloco acima do rodapé com links -->
         {% block rodape-links %}
+<<<<<<< HEAD
         <div class="container-fluid bg-sgsl text-white p-3">
             <div class="container">
                 <div class="row">
@@ -230,6 +293,9 @@
                 </div>
             </div>
         </div>
+=======
+        
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
         {% endblock %}
 
 
@@ -238,12 +304,20 @@
         <div class="container-fluid bg-light text-center p-3">
             <div class="row">
                 <div class="col-md-4 mx-auto text-center">
+<<<<<<< HEAD
                     <div class="col-auto">
                         <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/univesp-kaotinho.png" alt="Univesp e Elos de Amor" width="300px">
                       </div>
                     <p>
                         <span class="lead">Sistema de Gestão SIMEC Laminação</span><br>
                         <span>Desenvolvido por GRUPO PI 24 - PI II</span>
+=======
+                    <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" height="48" class="float-left" alt="">
+                    
+                    <p>
+                        <span class="lead">Elos de Amor</span><br>
+                        <span>Desenvolvido por Alunos UUNIVESP</span>
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
                     </p>
                 </div>
                 <!-- <div class="col-md text-left">

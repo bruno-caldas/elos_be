@@ -10,9 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from ensurepip import bootstrap
 from pathlib import Path
 import os, sys
+<<<<<<< HEAD
 from telnetlib import AUTHENTICATION
+=======
+from telnetlib import LOGOUT
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 import django_heroku
 import dj_database_url
 from datetime import timedelta
@@ -59,7 +64,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -91,17 +96,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'django.contrib.sites',
+=======
+   # 'django.contrib.sites',
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
     'storages',
     'eventos',
     'parceiros',
     'rede_social',
+    'doadores.apps.DoadoresConfig',
     'rest_framework',
     'rest_framework_simplejwt',
+<<<<<<< HEAD
     'doadores.apps.DoadoresConfig',
     'crispy_forms',
 
+=======
+    'crispy_forms',
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 ]
+
+#crispy form
+
+CRISPY_TAMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -280,6 +298,7 @@ SIMPLE_JWT = {
 
 }
 
+<<<<<<< HEAD
 AUTHENTICATION_BACKENDS = (
 
 'django.contrib.auth.backends.ModelBackend',
@@ -290,3 +309,10 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = "/"
+=======
+# Configuração de login
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'home'
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)

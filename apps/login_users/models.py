@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Pesquisa(models.Model):
+
+    cep = models.IntegerField(verbose_name='Pesquisa de CEP')
+
+    

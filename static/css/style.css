@@ -6,10 +6,10 @@
 
 .barra-inferior {
     padding: 2.5rem 0;
-    color: #999;
+    color: rgb(0, 0, 0);
     text-align: center;
-    background-color: #f9f9f9;
-    border-top: 0.05rem solid #e5e5e5;
+    background-color: #afaaaa98;
+    border-top: 0.05rem solid #000000;
     display: block;
 }
 

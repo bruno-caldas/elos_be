@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from django.shortcuts import render
+=======
+from re import template
+from django.shortcuts import render
+from django.urls import reverse_lazy
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -6,7 +12,24 @@ from django.http.response import JsonResponse
 from doadores.models import Doadores
 from doadores.serializers import DoadoresSerializer
 
+<<<<<<< HEAD
 @csrf_exempt
+=======
+from django.contrib.auth.mixins import LoginRequiredMixin
+from braces.views import GroupRequiredMixin
+
+
+#class Doadores_rest(GroupRequiredMixin, LoginRequiredMixin):
+ #   login_url = reverse_lazy('login')
+ #   group_required = u"doadores"
+ #   model = Doadores
+ #   fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intenção']
+ 
+ #   template_name = 'doadores/form.html'
+    
+@csrf_exempt
+
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 def doadoresApi(request, id=0):
     if request.method=="GET":
         doadores = Doadores.objects.all()
@@ -19,7 +42,11 @@ def doadoresApi(request, id=0):
             doador_serializer.save()
             return JsonResponse("Cadastro realizado com sucesso!!!", safe=False)
         return JsonResponse("Ocorreu um erro durante a gravação dos dados, tente novamente", safe=False)
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
     elif request.method=="PUT":
         doador_data = JSONParser().parse(request)
         doador = Doadores.objects.get(id_doadores=doador_data['id_doadores'])
@@ -32,7 +59,11 @@ def doadoresApi(request, id=0):
     elif request.method=="DELETE":
         doador = Doadores.objects.get(id_doadores=id)
         doador.delete()
+<<<<<<< HEAD
         return JsonResponse("Cadastro cancelado com Sucesso!!!", safe=False)
 
 
 # Create your views here.
+=======
+        return JsonResponse("Cadastro cancelado com Sucesso!!!", safe=False)
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)

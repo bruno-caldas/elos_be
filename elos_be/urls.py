@@ -19,11 +19,11 @@ from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
 import parceiros
 
-from elos_be.views import carrega_abrigo, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate
+from elos_be.views import carrega_abrigo, carrega_aplicacao, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate, carrega_aplicacao
 
 from cadastro import views
 from eventos import urls, views
-from parceiros import urls, views
+from parceiros import urls, views 
 
 from django.views.generic import TemplateView
 
@@ -35,6 +35,10 @@ from doadores.api import viewsets as doadoresviewsets
 route = routers.DefaultRouter()
 
 route.register(r'doadores', doadoresviewsets.DoadoresViewSet, basename="Doadores")
+<<<<<<< HEAD
+=======
+route.register(r'doacao', doadoresviewsets.DoacaoViewSet, basename="Doacao")
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
 
 app_name = 'elos_be'
 urlpatterns = [
@@ -44,6 +48,7 @@ urlpatterns = [
     path('djrichtextfield/', include('djrichtextfield.urls')), #ATIVAÇÃO DE RICH-TEXT
     path('', RedirectView.as_view(url='/abrigo/')),
     path('abrigo/', carrega_index, name="index"),
+    path('home/', carrega_aplicacao, name="home"),
     path('abrigo/local', carrega_abrigo, name="abrigo"),
     path('abrigo/contatos', carrega_contatos, name="contatos"),
     path('abrigo/ajuda', carrega_ajuda, name="ajuda"),
@@ -51,6 +56,7 @@ urlpatterns = [
     path('abrigo/parceiros',include("parceiros.urls")),
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
+<<<<<<< HEAD
     path('login/', include("usuarios.urls")),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
@@ -58,5 +64,13 @@ urlpatterns = [
     path('', include(route.urls)),
     path('accounts/', include('allauth.urls')),
     path('', TemplateView.as_view(template_name="usuarios/index.html")),
+=======
+    path('', include("login_users.urls")),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    url(r'^', include('doadores.urls')),
+    path('', include(route.urls)),
+    # path('api-auth/', include('rest_framework.urls')),
+>>>>>>> 18f5c8a (Criação login de usuarios, api cadastro de doadores e doação)
     
 ]
