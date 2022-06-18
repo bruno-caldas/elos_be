@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import os, sys
 import django_heroku
 import dj_database_url
@@ -83,6 +84,7 @@ INSTALLED_APPS = [
     'parceiros',
     'rede_social',
     'blog',
+    'usuarios',
     'cadastro.apps.CadastroConfig',
     'login_users',
     'djrichtextfield',
@@ -257,4 +259,12 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+
+## DJANGO MESSAGE TEMPLATES
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
 }

@@ -1,0 +1,29 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Dashboard</h1>
+      <p class="lead">Dashboard</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy">
+      {% include 'templates/../_alerts.html' %}
+    </div>
+    <div>
+      Dashboard
+    </div>
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}
