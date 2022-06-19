@@ -17,7 +17,7 @@ class Doadores(models.Model):
     endereco = models.CharField(max_length=500, verbose_name='Endereço')
     numero = models.IntegerField(verbose_name='Numero')
     complemento = models.CharField(max_length=50,verbose_name='Complemento')
-    celular = models.IntegerField(verbose_name='Celular para Contato',unique=True)
+    celular = models.BigIntegerField(verbose_name='Celular para Contato',unique=True)
        
     DO = 'DOADOR'
     DT = 'DONATÁRIO'
