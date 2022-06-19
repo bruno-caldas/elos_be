@@ -10,6 +10,7 @@ router.register('parceiros', ParceirosViewSet, basename='Parceiros')
 router.register('eventos', EventosViewSet, basename='Eventos')
 router.register(r'doadores', DoadoresViewSet, basename="Doadores")
 router.register(r'doacao', DoacaoViewSet, basename="Doacao")
+router.register('blog', PostViewSet, basename='Blog')
 
 urlpatterns = [
     # path('', views.getData),

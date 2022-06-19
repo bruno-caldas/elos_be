@@ -74,9 +74,6 @@ REST_FRAMEWORK = {
 }
 
 INSTALLED_APPS = [
-    'cadastro.apps.CadastroConfig',
-    'login_users',
-    'djrichtextfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,6 +85,10 @@ INSTALLED_APPS = [
     'parceiros',
     'rede_social',
     'doadores.apps.DoadoresConfig',
+    'blog',
+    'cadastro.apps.CadastroConfig',
+    'login_users',
+    'djrichtextfield',
     'rest_framework',
     'rest_framework_simplejwt',
     'crispy_forms',
