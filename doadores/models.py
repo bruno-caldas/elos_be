@@ -19,7 +19,7 @@ class Doadores(models.Model):
     complemento = models.CharField(max_length=50,verbose_name='Complemento')
     celular = models.IntegerField(verbose_name='Celular para Contato',unique=True)
        
-    DO = 'DOARDOR'
+    DO = 'DOADOR'
     DT = 'DONATÁRIO'
                            
     intencao = (
