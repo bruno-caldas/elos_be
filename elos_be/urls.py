@@ -53,11 +53,11 @@ urlpatterns = [
     path('abrigo/parceiros',include("parceiros.urls")),
     path('abrigo/eventos', include("eventos.urls")),
     path('abrigo/mural_animais', include("cadastro.urls")),
-    path('', include("login_users.urls")),
+    path('login/', include("login_users.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     url(r'^', include('doadores.urls')),
-    path('', include(route.urls)),
+    path('api_doadores/', include(route.urls)),
     # path('api-auth/', include('rest_framework.urls')),
     
 ]
