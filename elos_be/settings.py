@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from ensurepip import bootstrap
 from pathlib import Path
 import os, sys
+from telnetlib import LOGOUT
 import django_heroku
 import dj_database_url
 from datetime import timedelta
@@ -82,13 +84,19 @@ INSTALLED_APPS = [
     'eventos',
     'parceiros',
     'rede_social',
+    'doadores.apps.DoadoresConfig',
     'blog',
     'cadastro.apps.CadastroConfig',
     'login_users',
     'djrichtextfield',
     'rest_framework',
     'rest_framework_simplejwt',
+    'crispy_forms',
 ]
+
+#crispy form
+
+CRISPY_TAMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -258,3 +266,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# Configuração de login
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'home'
