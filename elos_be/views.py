@@ -7,6 +7,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
+from django.views.generic import TemplateView
 
 
 #CARREGA AS PÁGINAS PRINCIPAIS
@@ -26,5 +27,9 @@ def carrega_ajuda(request):
 def carrega_resgate(request):
     return render(request, "templates/../resgate.html")
 
-def carrega_aplicacao(request):
-    return render(request, "templates/../home.html")
+#def carrega_aplicacao(request):
+ #   return render(request, "templates/../home.html")
+
+class PaginaHome(LoginRequiredMixin, TemplateView):
+    login_url = reverse_lazy('login')
+    template_name = 'templates/../home.html' 
