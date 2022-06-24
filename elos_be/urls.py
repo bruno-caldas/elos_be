@@ -19,11 +19,12 @@ from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
 import parceiros
 
-from elos_be.views import carrega_abrigo, carrega_aplicacao, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate, carrega_aplicacao
+from elos_be.views import carrega_abrigo, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate, PaginaHome
 
 from cadastro import views
 from eventos import urls, views
-from parceiros import urls, views 
+from parceiros import urls, views
+from doadores import urls, views 
 
 from django.views.generic import TemplateView
 
@@ -45,7 +46,8 @@ urlpatterns = [
     path('djrichtextfield/', include('djrichtextfield.urls')), #ATIVAÇÃO DE RICH-TEXT
     path('', RedirectView.as_view(url='/abrigo/')),
     path('abrigo/', carrega_index, name="index"),
-    path('home/', carrega_aplicacao, name="home"),
+    path('home/', PaginaHome.as_view(), name='home'),
+   # path('home/', carrega_aplicacao, name="home"),
     path('abrigo/local', carrega_abrigo, name="abrigo"),
     path('abrigo/contatos', carrega_contatos, name="contatos"),
     path('abrigo/ajuda', carrega_ajuda, name="ajuda"),
@@ -58,7 +60,8 @@ urlpatterns = [
     path('', include("login_users.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    url(r'^', include('doadores.urls')),
+    path('', include('doadores.urls')),
+    #url(r'^', include('doadores.urls')),
     path('', include(route.urls)),
     # path('api-auth/', include('rest_framework.urls')),
     

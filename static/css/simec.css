@@ -2,6 +2,8 @@
 /* 
 Cores do sgsl 
 */
+
+
 .bg-sgsl {
     background-color: #ba9eafed;
 }
@@ -55,7 +57,7 @@ Formatação do DataTable
 */
 table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::before,
 table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child::before {
-    top: 15px !important;
+    top: 15px !important;  
 }
 
 
@@ -79,7 +81,7 @@ Personalização da Barra de menu pra ficar igual do site
 }
 
 .navbar .nav-item:hover{
-    background-color: #1aedf0d3;
+    background-color: #cccccdd3;
 }
 
 
@@ -98,4 +100,5 @@ Largura máxima das tabelas para não ficar mal formatada
 table td{
     max-width: 500px;
 }
+
 /* © 2022 GitHub, Inc. */

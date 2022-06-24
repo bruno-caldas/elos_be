@@ -1,11 +1,14 @@
 from re import template
+from attr import field
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
+from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView
 
-from doadores.models import Doadores
+from .models import Doacao, Doadores
 from doadores.serializers import DoadoresSerializer
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -48,3 +51,33 @@ def doadoresApi(request, id=0):
         doador = Doadores.objects.get(id_doadores=id)
         doador.delete()
         return JsonResponse("Cadastro cancelado com Sucesso!!!", safe=False)
+
+
+class DoadoresList(GroupRequiredMixin, LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    group_required = u"admin"
+    model = Doadores
+    template_name = 'doadores/listas_doadores.html'
+
+class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    group_required = u"admin"
+    model = Doacao
+    template_name = 'doadores/listas_doacao.html'
+
+    #def get_queryset(self):
+     #   self.object_list = Doadores.objects.filter(username=self.request.user)
+      #  return self.object_list
+
+## UPDATE
+
+
+class DoadoresUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    group_required = u"admin"
+    model = Doadores
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intenção']
+    template_name = "doadores/formedit.html"
+    sucess_url = reverse_lazy('index')
+
+
