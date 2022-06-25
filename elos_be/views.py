@@ -16,7 +16,7 @@ def carrega_index(request):
     return render(request, "templates/../index.html")
 
 def carrega_abrigo(request):
-    return render(request, "templates/../abrigo.html")
+    return render(request, "templates/../projeto.html")
 
 def carrega_contatos(request):
     return render(request, "templates/../contatos.html")
