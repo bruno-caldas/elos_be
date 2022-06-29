@@ -13,18 +13,10 @@
     display: block;
 }
 
-.univesp-kaotinho {
+.univesp-elos {
     object-fit: scale-down;
 }
 
 .img-carrossel {
     object-fit: contain;
-}
-
-body {
-    box-sizing: content-box;
-  }
-
-p {
-    text-align: justify;
 }
