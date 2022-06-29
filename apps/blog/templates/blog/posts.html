@@ -7,7 +7,7 @@
 <!-- Cabeçalho da página -->
   <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
     <div class="col-auto">
-      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Univesp e Kaotinho" width="90px">
+      <img class="univesp-elos img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/mural_fofura2.svg" alt="Univesp e Elos de Amor" width="90px">
     </div>
     <div class="col-md-8 text-white">
       <h2 class="display-5 font-italic">Blog "Elos de Amor"</h1>
@@ -30,28 +30,12 @@
               {% for post in posts %}
               {% if post.get_publicacao_recente %}
               <!-- Início do cartão -->
-              <div class="card mt-2 shadow">
-                <div class="card-header bg-secondary align-middle text-white">
-                  <span class="material-icons align-middle fs-5">celebration</span>
-                  <span class="align-middle card=title fs-5">{{ post.titulo }}</span>
-                </div>
+              <div class="card mb-3">
+                <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/mural_fofura2.svg" class="card-img-top bg-secondary" alt="...">
                 <div class="card-body">
-                  <div class="row justify-content-start">
-                    <div class="col-1 fs-6">
-                      <svg class="fs-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
-                    </div>
-                    <div class="col fs-6">
-                      <p class="card-text fs-6">{{ post.get_data_publicacao }}, faltam  {{ post.get_publicacao }}.</p>
-                    </div>
-                    <div class="row">
-                      <div class="col-1 fs-6">
-                        <span class="material-icons fs-6">description</span>
-                      </div>
-                      <div class="col fs-6">
-                        <p class="card-text fs-6">{{ post.publicacao }}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <h5 class="card-title">{{ post.titulo }}</h5>
+                  <p class="card-text">{{ post.publicacao }}</p>
+                  <p class="card-text"><small class="text-muted">Publicado em: {{ post.get_data_publicacao }}</small></p>
                 </div>
               </div>
               {% endif %}
@@ -70,28 +54,12 @@
               {% for post in posts %}
               {% if post.get_publicacao_antiga %} 
               <!-- Início do cartão -->
-              <div class="card mt-2 shadow">
-                <div class="card-header bg-secondary align-middle text-white">
-                  <span class="material-icons align-middle fs-5">celebration</span>
-                  <span class="align-middle card=title fs-5">{{ post.titulo }}</span>
-                </div>
+              <div class="card mb-3">
+                <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/mural_fofura2.svg" class="card-img-top bg-secondary" alt="...">
                 <div class="card-body">
-                  <div class="row justify-content-start">
-                    <div class="col-1 fs-6">
-                      <svg class="fs-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
-                    </div>
-                    <div class="col fs-6">
-                      <p class="card-text fs-6">{{ post.get_data_publicacao }}, faltam  {{ post.get_publicacao }}.</p>
-                    </div>
-                    <div class="row">
-                      <div class="col-1 fs-6">
-                        <span class="material-icons fs-6">description</span>
-                      </div>
-                      <div class="col fs-6">
-                        <p class="card-text fs-6">{{ post.publicacao }}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <h5 class="card-title">{{ post.titulo }}</h5>
+                  <p class="card-text">{{ post.publicacao }}</p>
+                  <p class="card-text"><small class="text-muted">Publicado em: {{ post.get_data_publicacao }}</small></p>
                 </div>
               </div>
               {% endif %}
@@ -100,10 +68,7 @@
           </div>
         </div>
       </div><!-- Fim do Accordion -->
-
     </div><!-- Fim row-->
   </div><!-- Fim do Conteúdo principal -->
-
 </div>
-
 {% endblock %}
