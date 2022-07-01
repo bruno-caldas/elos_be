@@ -8,12 +8,9 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-
     url(r'^doador/$', views.doadoresApi),
     url(r'^doador/([0-9]+)$', views.doadoresApi),
     path('listar/', DoadoresList.as_view(), name='listar'),
     path('ldoacao/', DoacaoList.as_view(), name='ldoacao'),
     path('editar/doadores/<int:pk>/', DoadoresUpdate.as_view(), name='editar-doadores'),
-    
-    
 ]

@@ -58,6 +58,7 @@ urlpatterns = [
     path('elos/blog/', include("blog.urls")),
     path('elos/social/', include("rede_social.urls")),
     path('', include("login_users.urls")),
+    path('doadores', include("doadores.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('doadores.urls')),

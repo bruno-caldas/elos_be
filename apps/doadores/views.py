@@ -19,12 +19,11 @@ from braces.views import GroupRequiredMixin
  #   login_url = reverse_lazy('login')
  #   group_required = u"doadores"
  #   model = Doadores
- #   fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intenção']
+ #   fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intencao']
  
  #   template_name = 'doadores/form.html'
     
 @csrf_exempt
-
 def doadoresApi(request, id=0):
     if request.method=="GET":
         doadores = Doadores.objects.all()
@@ -52,7 +51,6 @@ def doadoresApi(request, id=0):
         doador.delete()
         return JsonResponse("Cadastro cancelado com Sucesso!!!", safe=False)
 
-
 class DoadoresList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     group_required = u"admin"
@@ -71,13 +69,10 @@ class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
 
 ## UPDATE
 
-
 class DoadoresUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     group_required = u"admin"
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intenção']
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intencao']
     template_name = "doadores/formedit.html"
     sucess_url = reverse_lazy('index')
-
-

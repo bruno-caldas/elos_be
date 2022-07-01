@@ -1,0 +1,47 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Login</h1>
+      <p class="lead">Cadastre-se para iniciar um elo conosco.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy">
+      {% include 'templates/../_alerts.html' %}
+    </div>
+    <div class="col-md-8 border-secondy">
+      <div class="contact-form-area">
+          <form action="{% url 'usuarios:login' %}" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                  <div class="col-12 col-lg-12">
+                  <label for="email"><b>Email</b></label>
+                      <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
+                  </div>
+                      <div class="col-12 col-lg-12">
+                      <label for="senha"><b>Senha</b></label>
+                      <input id="senha" type="password" class="form-control" name="senha" placeholder="Digite aqui sua senha">
+                  </div>
+                  <div class="col-12 text-center">
+                      <button class="btn btn-secondary mt-4" type="submit">Acessar sua conta</button>
+                      <button type="button" class="btn btn-secondary mt-4" onclick="exibirCriarConta()">Ainda não tem conta? Clique aqui</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-kaotinho img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Kaotinho" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Cadastro de Usuário</h1>
+      <p class="lead">Cadastre-se para iniciar um elo conosco.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy">
+      {% include 'templates/../_alerts.html' %}
+    </div>
+    <div class="col-md-8 border-secondy">
+        <div class="contact-form-area">
+            <form action="{% url 'usuarios:cadastro' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <label for="nome"><b>Nome de Usuário</b></label>
+                        <input type="text" class="form-control" name="nome" placeholder="Exemplo: jose_amorim" required>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <label for="email"><b>Email</b></label>
+                        <input type="email" class="form-control" name="email" placeholder="Exemplo: jose@amorim.com" required>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label for="password"><b>Senha</b></label>
+                        <input type="password" class="form-control" name="senha" placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label for="password2"><b>Confirmação de senha</b></label>
+                        <input type="password" class="form-control" name="senha2" placeholder="Digite sua senha mais uma vez" required>
+                    </div>
+                    <div class="col-12 text-center m-4">
+                        <button class="btn btn-secondary" type="submit">Criar sua conta</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
+{% endblock %}

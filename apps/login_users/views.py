@@ -4,11 +4,18 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User, Group
+from django.contrib import auth, messages
 from .forms import UsuarioForm
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404  
 from django.core.exceptions import ValidationError
 from django.http import HttpRequest, JsonResponse
+
+from django.http import HttpRequest, JsonResponse
+from django.shortcuts import render, redirect
+
+from urllib.request import urlopen
+import json
 
 
 
@@ -24,7 +31,7 @@ import json
 class UsuarioCreate(CreateView):
     template_name = 'login_users/form.html'
     form_class = UsuarioForm
-    success_url = reverse_lazy('abrigo')
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
 
@@ -45,23 +52,27 @@ class UsuarioCreate(CreateView):
         context['Botao'] = "Cadastrar"
         return context
 
-# class Pesquisa(BaseCreateView):
-  #template_name = 'login_users/via_cep.html'
-  #success_url = reverse_lazy('abrigo')
+def carrega_cep(request):
+    return render(request,'login_users/via_cep.html')
 
-  #def pesquisa_cep(request):
-   # if request.method == 'POST':
-    #  cep = request.POST['cep']
-     # url = "http://viacep.com.br/ws/"+cep+"/json"
-      #print('chamou pesquisa cep')
-      #print(cep)
-      #print(url)
-      #response = urlopen(url)
-      #data = json.loads(response.read())
-      #if data['uf'] == 'PE':
-       # print('CEP CORRETO')
-       # return JsonResponse(data)
-      #else:
-       # print('CEP INCORRETO')
-       # return JsonResponse(data)
-
+def pesquisa_cep(request):
+    if request.method == 'POST':
+        try:
+            cep = request.POST['cep']
+            url = "http://viacep.com.br/ws/"+cep+"/json"
+            print('chamou pesquisa cep')
+            print(cep)
+            print(url)
+            response = urlopen(url)
+            data = json.loads(response.read())
+            if data['uf'] == 'PE':
+                messages.success(request,'CEP CORRETO')
+                return redirect('signup')
+                #return JsonResponse(data)
+            else:
+                messages.error(request,'Desculpe, infelizmente não estamos atendendo sua localidade.')
+                return redirect('cep')
+                #return JsonResponse(data)
+        except:
+            messages.error(request,'Verifique o CEP digitado.')
+            return redirect('cep')
