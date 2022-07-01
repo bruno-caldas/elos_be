@@ -28,7 +28,7 @@ class Doadores(models.Model):
                 
     )
 
-    Intenção =  models.CharField(choices=intencao, verbose_name="Intenção", max_length=50)
+    Intencao =  models.CharField(choices=intencao, verbose_name="Intenção", max_length=50)
     Doador = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Doacao(models.Model):

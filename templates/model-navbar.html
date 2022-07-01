@@ -4,7 +4,7 @@
   <div class="container mx-2">
     <!-- Logo e Título do site -->
     <a class="navbar-brand h1 mb-8" href="{% url 'index' %}">
-        <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" width="50" height="50" class="d-inline-block align-middle m-0 px-0 py-0" alt="logo">
+        <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png" width="50" height="50" class="d-inline-block align-middle m-0 px-0 py-0" alt="logo Elos de Amor">
         <spam class="align-middle" id="titulo">Elos de Amor</spam>
     </a><!-- Fim logo e título-->
     <!-- Botão collased -->
@@ -24,16 +24,16 @@
       {% if request.user.is_authenticated %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navSocial">
-            <i class="fa fa-user-circle" aria-hidden="true"></i><!--data-toggle="dropdown" id="navSocial">-->
             <span id="username">{{ request.user }}</span>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'login' %}">
-              Login
+            <a class="dropdown-item" href="{% url 'ldoacao' %}">
+              Minhas Doações
             </a>
-            <a class="dropdown-item" href="{% url 'signup' %}">
-              Inscreva-se
-            </a>
+            {% if user.is_superuser %}
+                <a class="dropdown-item" href="{% url 'listar' %}">Doadores</a>
+                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+            {% endif %}
             <a class="dropdown-item" href="{% url 'logout' %}">
               Sair
             </a>
@@ -41,17 +41,15 @@
         </li>
       {% else %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user-circle" aria-hidden="true"></i>
-              Acesse
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="{% url 'login' %}">
-            Login
+              Login
             </a>
-            <a class="dropdown-item" href="{% url 'signup' %}">
-            Inscreva-se
+            <a class="dropdown-item" href="{% url 'cep' %}">
+              Inscreva-se
             </a>
           </div>
         </li>

@@ -7,7 +7,7 @@
 <!-- Cabeçalho da página -->
   <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
     <div class="col-auto">
-      <img class="univesp-elos img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Univesp e Elos de Amor" width="90px">
+      <img class="univesp-elos img-fluid rounded mx-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" alt="Logo mãos dadas dos parceiros Univesp e Elos de Amor" width="90px">
     </div>
     <div class="col-md-8 text-white">
       <h2 class="display-5 font-italic">Nossos Parceiros</h1>
@@ -17,11 +17,11 @@
 <!-- Conteúdo Principal -->
   <div class="row justify-content-center mt-0">
     <div class="col-md-8 border-secondy">
-      <div class="row">
+      <div class="row mx-auto">
       {% for parceiro in parceiros %}
-      <div class="col-md-4 mt-4">
-        <div class="card" style="width: 18rem;">
-          <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" class="card-img-top bg-secondary" alt="...">
+      <div class="col-md-4 mt-3">
+        <div class="card mx-auto" style="width: 15rem;">
+          <img src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/parceiro2.svg" class="card-img-top bg-secondary" alt="logo do parceiro {{ parceiro.nome_parceiro }}">
           <div class="card-body">
             <h5 class="card-title">{{ parceiro.nome_parceiro }}</h5>
             <p class="card-text">{{ parceiro.descricao_parceiro }}</p>

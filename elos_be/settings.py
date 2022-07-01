@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from ensurepip import bootstrap
+from django.contrib.messages import constants as messages
 from pathlib import Path
 import os, sys
 from telnetlib import LOGOUT
@@ -273,3 +274,10 @@ SIMPLE_JWT = {
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'home'
+
+## DJANGO MESSAGE TEMPLATES
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+}

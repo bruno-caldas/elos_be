@@ -22,7 +22,7 @@ class AdminMural(admin.ModelAdmin):
     ordering = ['nome_cachorro','especie']
     search_fields = ['nome_cachorro']
 
-admin.site.register(Document,AdminMural)
-admin.site.register(EspecieAnimal)
+#admin.site.register(Document,AdminMural)
+#admin.site.register(EspecieAnimal)
 
 
