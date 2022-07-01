@@ -1,0 +1,102 @@
+{% extends 'templates/../home.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block conteudo %}
+<h3>Cadastro de Colaboradores</h3>
+
+<p class="lead">
+    Preencha todos os campos obrigatórios.
+</p>
+
+<link href="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png"
+    rel="shortcut icon" type="image/x-icon" />
+
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-sm-5 sm-0">{{ form.nome|as_crispy_field }}</div>
+        <div class="form-group col-sm-6 sm-0">{{ form.sobrenome|as_crispy_field }}</div>
+        <div class="form-group col-sm-4 md-0">{{ form.dt_nasc|as_crispy_field }}</div>
+    </div>
+
+    <p class="lead">
+    <h4>Endereço</h4>
+    <div class="form-row">
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3 md-0"> {{ form.cep|as_crispy_field }}</div>
+        <div class="form-group col-md-8 md-0"> {{ form.endereco|as_crispy_field }}</div>
+        <div class="form-group col-md-3 md-0">{{ form.numero|as_crispy_field }}</div>
+        <div class="form-group col-md-6 md-0">{{ form.complemento|as_crispy_field }}</div>
+        <div class="form-group col-sm-3 sm-0">{{ form.bairro|as_crispy_field }}</div>
+        <div class="form-group col-md-3 md-0">{{ form.cidade|as_crispy_field }}</div>
+        <div class="form-group col-md-4 md-0">{{ form.estado|as_crispy_field }}</div>
+    </div>
+
+    <hr>
+
+    <p class="lead">
+    <h4>Dados Gerais</h4>
+    </p>
+
+    <hr>
+
+    <div class="form-row">
+        <div class="form-group col-md-3 md-0">{{ form.celular|as_crispy_field }}</div>
+        <div class="form-group col-md-4 md-0">{{ form.Intencao|as_crispy_field }}</div>
+        
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script src="https://unpkg.com/imask@6.0.7/dist/imask.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#id_dt_nasc").mask("00/00/0000");
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('#id_celular').mask(SPMaskBehavior, spOptions);
+
+        $("#id_dt_nasc").mask("00/00/0000");
+
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('#id_celular').mask(SPMaskBehavior, spOptions);
+
+    });
+</script>
+{% endblock scripts %}
+
+

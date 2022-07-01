@@ -82,9 +82,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                <a class="dropdown-item" class="nav-link" href="{% url 'ldoacao' %}"> Colaboradores </a>
+                                <a class="dropdown-item" class="nav-link" href="{% url 'formc' %}"> Dados Colaboradores </a>
                                 <div class="dropdown-divider"></div>
-                                <!-- <a class="dropdown-item" href="">Situações</a> -->
+                                <a class="dropdown-item" href="{% url 'formup' %}">Atualizar dados Colaboradores</a> -->
                                 <!--<a class="dropdown-item" href="">Classes</a>-->
                                 <!--<a class="dropdown-item" href="">Progressões</a>-->
                                 <!--<a class="dropdown-item" href="">Campos</a>-->
@@ -102,7 +102,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                <a class="dropdown-item" class="nav-link" href="http://127.0.0.1:8000/doacao/"> Doação</a>
+                                <a class="dropdown-item" class="nav-link" href="{% url 'novadoacao' %}"> Doação</a>
                                  <!-- <a class="dropdown-item" href="">Gerencia</a>-->
                                  <!-- <a class="dropdown-item" href="">Area</a>-->
                                  <!-- <a class="dropdown-item" href="">Local</a>-->
@@ -141,7 +141,7 @@
                         {% endif %}
                         {% endif %}
 
-                        <li class="nav-item ">
+                        <!--<li class="nav-item ">
                             <a class="nav-link" href="">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 Sobre
@@ -152,7 +152,7 @@
                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                                 Ajuda
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
 
                     <ul class="navbar-nav">
@@ -165,12 +165,12 @@
                                 <span id="username">{{ request.user }}</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="">
+                               <!--<a class="dropdown-item" href="">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     Meus dados</a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
-                                    Alterar senha</a>
+                                    Alterar senha</a>-->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'logout' %}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>

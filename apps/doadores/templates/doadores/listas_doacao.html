@@ -59,11 +59,11 @@
             {% for doacao in object_list %}
             <tr>
                 <td>{{ doacao.id }}</td>
-                <td>{{ doacao.Classificacao }}</td>
-                <td>{{ doacao.Descricao }}</td>
-                <td>{{ doacao.Estado }}</td>
-                <td>{{ doacao.Quantidade }}</td>
-                <td>{{ doacao.Doador }}</td>
+                <td>{{ doacao.classificacao }}</td>
+                <td>{{ doacao.descricao }}</td>
+                <td>{{ doacao.estado }}</td>
+                <td>{{ doacao.quantidade }}</td>
+                <td>{{ doacao.username }}</td>
             </tr>
             {% empty %}
         </tbody>

@@ -1,0 +1,34 @@
+{% extends 'templates/../home.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block conteudo %}
+<h3>Registre sua Doação</h3>
+
+<p class="lead">
+    Preencha todos os campos obrigatórios.
+</p>
+
+<link href="https://piunivesp.s3.sa-east-1.amazonaws.com/elos_de_amor/media/logo-elos_transparente.png"
+    rel="shortcut icon" type="image/x-icon" />
+
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-sm-5 sm-0">{{ form.classificacao|as_crispy_field }}</div>
+        <div class="form-group col-sm-10 sm-0">{{ form.descricao|as_crispy_field }}</div>
+        <div class="form-group col-sm-4 md-0">{{ form.estado|as_crispy_field }}</div>
+        <div class="form-group col-sm-10 md-0">{{ form.quantidade|as_crispy_field }}</div>
+    </div>
+
+     <button type="submit" class="btn btn-success">Registrar</button>
+
+</form>
+
+{% endblock %}

@@ -1,12 +1,17 @@
- 
+from audioop import reverse
 from faulthandler import disable
+from pickle import TRUE
 from statistics import mode
 
 from django import forms
 from django.conf import Settings, settings
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.urls import reverse
 from requests import request
+from localflavor.br.models import BRStateField, BRPostalCodeField
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your models here.
 
@@ -14,10 +19,16 @@ class Doadores(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Primeiro Nome')
     sobrenome = models.CharField(max_length=50, verbose_name='Sobrenome')
     dt_nasc = models.DateField(max_length=11, verbose_name='Data de Nascimento')
+    cep = BRPostalCodeField('CEP')
     endereco = models.CharField(max_length=500, verbose_name='Endereço')
     numero = models.IntegerField(verbose_name='Numero')
     complemento = models.CharField(max_length=50,verbose_name='Complemento')
-    celular = models.BigIntegerField(verbose_name='Celular para Contato',unique=True)
+    bairro = models.CharField(max_length=500, verbose_name='Bairro')
+    cidade = models.CharField(max_length=500, verbose_name='Cidade')
+    estado = BRStateField(null=True, blank=True, verbose_name='Estado')    
+    
+   
+    celular = models.CharField(max_length=20, blank=False, verbose_name='Celular para Contato',unique=True)
        
     DO = 'DOADOR'
     DT = 'DONATÁRIO'
@@ -29,7 +40,17 @@ class Doadores(models.Model):
     )
 
     Intencao =  models.CharField(choices=intencao, verbose_name="Intenção", max_length=50)
-    Doador = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.PROTECT, null= False, verbose_name='Doador')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home')
+
+    def __str__(self):
+        return "{} {} {} ({})".format(self.nome, self.username, self.celular, self.Intencao)
+
+
+   
+
 
 class Doacao(models.Model):
     
@@ -55,28 +76,28 @@ class Doacao(models.Model):
         (RPC, 'ROUPAS DE FRIO E ACESSÓRIOS'),
            
     )
-    Classificacao =  models.CharField(choices=classificacao, verbose_name="Estado de Conservação", max_length=56)
+    classificacao =  models.CharField(choices=classificacao, verbose_name="Tipo de Doação", max_length=56)
     
-    Descricao = models.CharField(max_length=50, verbose_name='Descrição do item para doação')
+    descricao = models.CharField(max_length=3000, verbose_name='Descrição do item para doação')
     
     NV = 'NOVO'
     SM = 'SEMI-NOVO'
     US = 'USADO'
     NA = 'NAO SE APLICA AO ITEM'
                            
-    estado = (
+    listestado = (
         (NV, 'NOVO'),
         (SM, 'SEMI-NOVO'),
         (US, 'USADO'),
         (NA, 'NÃO SE APLICA'),
                 
     )
-    Estado =  models.CharField(choices=estado, verbose_name="Estado de Conservação", max_length=50)
-    Quantidade = models.IntegerField(verbose_name='Quantidade de Itens')
-    Doador = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
-    
-    
-   
+    estado =  models.CharField(choices=listestado, verbose_name="Estado de Conservação", max_length=50)
+    quantidade = models.IntegerField(verbose_name='Quantidade de Itens', null=False)
+    username = models.ForeignKey(User, on_delete=models.PROTECT, null=False, verbose_name='Doador' )
 
-      
-    
+    def get_absolute_url(self):
+        return reverse('novadoacao')
+
+    def __str__(self):
+        return "{} {} {} {} ({})".format(self.classificacao, self.descricao, self.estado, self.quantidade, self.username)
