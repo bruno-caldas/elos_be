@@ -1,19 +1,22 @@
-from re import template
-from attr import field
+from django.forms import ValidationError
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404  
+from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
-
+from django.views.generic.edit import UpdateView, CreateView
+from django.views.generic import TemplateView
 from .models import Doacao, Doadores
 from doadores.serializers import DoadoresSerializer
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import GroupRequiredMixin
-
+from django.contrib.messages.views import SuccessMessageMixin
 
 #class Doadores_rest(GroupRequiredMixin, LoginRequiredMixin):
  #   login_url = reverse_lazy('login')
@@ -24,6 +27,7 @@ from braces.views import GroupRequiredMixin
  #   template_name = 'doadores/form.html'
     
 @csrf_exempt
+
 def doadoresApi(request, id=0):
     if request.method=="GET":
         doadores = Doadores.objects.all()
@@ -59,7 +63,7 @@ class DoadoresList(GroupRequiredMixin, LoginRequiredMixin, ListView):
 
 class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    group_required = u"admin"
+    group_required = u"Doadores"
     model = Doacao
     template_name = 'doadores/listas_doacao.html'
 
@@ -67,12 +71,88 @@ class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
      #   self.object_list = Doadores.objects.filter(username=self.request.user)
       #  return self.object_list
 
-## UPDATE
 
-class DoadoresUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+
+## Model registrar
+
+class DoadoresCreate(LoginRequiredMixin,GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
-    group_required = u"admin"
+    group_required = u"doadores"
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intencao']
-    template_name = "doadores/formedit.html"
-    sucess_url = reverse_lazy('index')
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    template_name = "doadores/formdoadores.html"
+    sucess_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Doadores, username=self.request.user)
+        return self.object
+
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        url = super().form_(form)
+        return url
+
+class DoacaoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = Doacao
+    fields = ['classificacao', 'descricao', 'estado', 'quantidade']
+    template_name = "doadores/formdoacao.html"
+    sucess_url = reverse_lazy('novadoacao')
+    success_message = 'Obrigado(a) pela sua doação, com pequenas ações fazemos a diferença. DEUS te abençõe!!'
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Doacao, username=self.request.user)
+        return self.object
+
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        url = super().form_valid(form)
+        return url 
+
+     
+
+## Atualizar dados de Colaborador 
+
+class DoadoresUpdate(UpdateView, GroupRequiredMixin):
+    login_url = reverse_lazy('login')
+    group_required = u"doadores"
+    model = Doadores
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    template_name = 'doadores/formdoadores.html'
+    sucess_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Doadores, username=self.request.user)
+        return self.object
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Registro de Novo Colabordor"
+        context['Botao'] = "Atualizar"
+
+        return context
+
+class AtualizacaoDoadorCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = Doadores
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    template_name = 'doadores/formdoadores.html'
+    success_url = reverse_lazy('home')
+    
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Doadores, username=self.request.user)
+        return self.object
+
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        url = super().form_valid(form)
+        return url 
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Registro de Novo Colabordor"
+        context['Botao'] = "Atualizar"
+
+        return context
