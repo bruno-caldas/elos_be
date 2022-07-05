@@ -28,7 +28,7 @@ class Doadores(models.Model):
     estado = BRStateField(null=True, blank=True, verbose_name='Estado')    
     
    
-    celular = models.CharField(max_length=20, blank=False, verbose_name='Celular para Contato',unique=True)
+    celular = models.CharField(max_length=16, verbose_name='Celular para Contato',unique=True)
        
     DO = 'DOADOR'
     DT = 'DONATÁRIO'
