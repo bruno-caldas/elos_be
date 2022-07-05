@@ -19,7 +19,7 @@ class Doadores(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Primeiro Nome')
     sobrenome = models.CharField(max_length=50, verbose_name='Sobrenome')
     dt_nasc = models.DateField(max_length=11, verbose_name='Data de Nascimento')
-    cep = BRPostalCodeField('CEP')
+    cep = models.CharField(max_length=9, verbose_name='CEP')
     endereco = models.CharField(max_length=500, verbose_name='Endereço')
     numero = models.IntegerField(verbose_name='Numero')
     complemento = models.CharField(max_length=50,verbose_name='Complemento')
