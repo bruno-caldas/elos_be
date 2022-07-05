@@ -27,35 +27,21 @@
 
 <script>
 
-    $(document).ready(function(){
+$(document).ready(function () {
 
-        $("#id_dataNascimento").mask("00/00/0000");
+$("#id_dt_nasc").mask("00/00/0000");
+var SPMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 0 0000-0000' : '(00) 0000-00009';
+},
+    spOptions = {
+        onKeyPress: function (val, e, field, options) {
+            field.mask(SPMaskBehavior.apply({}, arguments), options);
+        }
+    };
 
-        var SPMaskBehavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-        },
-            spOptions = {
-                onKeyPress: function(val, e, field, options) {
-                    field.mask(SPMaskBehavior.apply({}, arguments), options);
-                }
-            };
+$('#id_celular').mask(SPMaskBehavior, spOptions);
 
-        $('#id_celular').mask(SPMaskBehavior, spOptions);
-
-    $("#id_dataNascimento").mask("00/00/0000");
-
-        var SPMaskBehavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-        },
-            spOptions = {
-                onKeyPress: function(val, e, field, options) {
-                    field.mask(SPMaskBehavior.apply({}, arguments), options);
-                }
-            };
-
-        $('#id_telefonefixo').mask(SPMaskBehavior, spOptions);
-
-    });
+});
 
 </script>
 {% endblock %}
