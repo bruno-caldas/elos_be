@@ -79,7 +79,7 @@ class DoadoresCreate(LoginRequiredMixin,GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     group_required = u"doadores"
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
     template_name = "doadores/formdoadores.html"
     sucess_url = reverse_lazy('home')
 
@@ -117,7 +117,7 @@ class DoadoresUpdate(UpdateView, GroupRequiredMixin):
     login_url = reverse_lazy('login')
     group_required = u"doadores"
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
     template_name = 'doadores/formdoadores.html'
     sucess_url = reverse_lazy('home')
 
@@ -136,7 +136,7 @@ class DoadoresUpdate(UpdateView, GroupRequiredMixin):
 class AtualizacaoDoadorCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
     template_name = 'doadores/formdoadores.html'
     success_url = reverse_lazy('home')
     
