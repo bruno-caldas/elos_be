@@ -4,7 +4,7 @@ from doadores import models
 class DoadoresSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Doadores
-        fields = 'nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'cep',  'bairro', 'cidade', 'estado', 'celular', 'Intencao', 'username' 
+        fields = 'nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao', 'username' 
 
 
 class DoacaoSerializer(serializers.ModelSerializer):
