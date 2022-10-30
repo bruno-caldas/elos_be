@@ -1,0 +1,47 @@
+{% extends 'templates/../home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block content %}
+    <h3>Cadastro de Doador</h3>
+<p class="lead">
+    Preencha todos os campos obrigatórios
+</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <hr>
+
+        <button class="btn btn-success" type="submit">Cadastrar</button>
+    </form>
+
+    {% endblock %}s %}
+
+{% block scripts %}
+
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<script>
+
+$(document).ready(function () {
+
+$("#id_dt_nasc").mask("00/00/0000");
+var SPMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 0 0000-0000' : '(00) 0000-00009';
+},
+    spOptions = {
+        onKeyPress: function (val, e, field, options) {
+            field.mask(SPMaskBehavior.apply({}, arguments), options);
+        }
+    };
+
+$('#id_celular').mask(SPMaskBehavior, spOptions);
+
+});
+
+</script>
+{% endblock %}

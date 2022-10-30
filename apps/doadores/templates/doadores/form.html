@@ -1,27 +1,76 @@
-{% extends 'templates/../home.html' %}
+<style>
+
+
+    .tableContainer{
+        overflow-x: auto;
+    }
+
+    .fullTable{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;      
+        text-transform: capitalize; 
+    }
+
+    .fullTable td, .fullTable th{
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    .fullTable th{
+        background-color: #ba9eafed;
+        color: white;
+    }
+
+    .fullTablen tr:nth-child(even){
+        background-color: rgb(0, 0, 0);
+    }
+
+    .fullTable tr:hover{
+        background-color: #ddd;
+    }
+
+</style>
+
+{% extends 'templates/../model-page.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}Cadastro{% endblock %}
+{% block content %}
 
-{% block conteudo %}
-    <h3>Cadastro de Doador</h3>
-<p class="lead">
-    Preencha todos os campos obrigatórios
-</p>
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-elos img-fluid rounded mx-auto my-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Logo balões de festa Univesp e Elos de Amor" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Doadores</h1>
+      <p class="lead">Veja os doadores.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-12 border-secondy justify-content-start">
+        <div class="col-md-8 mx-auto">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+        
+                <hr>
+        
+                <button class="btn btn-secondary" type="submit">Cadastrar</button>
+            </form>
 
-        <hr>
+        </div>
+    </div><!-- Fim row-->
+  </div><!-- Fim do Conteúdo principal -->
 
-        <button class="btn btn-success" type="submit">Cadastrar</button>
-    </form>
+</div>
 
-    {% endblock %}s %}
-
-{% block scripts %}
+{% endblock %}
 
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>
 
@@ -42,9 +91,4 @@ var SPMaskBehavior = function (val) {
 $('#id_celular').mask(SPMaskBehavior, spOptions);
 
 });
-
 </script>
-{% endblock %}
-
-
-

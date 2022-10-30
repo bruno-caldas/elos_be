@@ -27,6 +27,9 @@ def carrega_ajuda(request):
 def carrega_resgate(request):
     return render(request, "templates/../resgate.html")
 
+def carrega_home(request):
+    return render(request,"templates/../home2.html")
+
 #def carrega_aplicacao(request):
  #   return render(request, "templates/../home.html")
 

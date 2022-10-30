@@ -77,7 +77,7 @@ class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
 
 class DoadoresCreate(LoginRequiredMixin,GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
-    group_required = u"doadores"
+    group_required = u"Doadores"
     model = Doadores
     fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
     template_name = "doadores/formdoadores.html"
@@ -109,13 +109,13 @@ class DoacaoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
         url = super().form_valid(form)
         return url 
 
-     
+
 
 ## Atualizar dados de Colaborador 
 
 class DoadoresUpdate(UpdateView, GroupRequiredMixin):
     login_url = reverse_lazy('login')
-    group_required = u"doadores"
+    group_required = u"Doadores"
     model = Doadores
     fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
     template_name = 'doadores/formdoadores.html'
