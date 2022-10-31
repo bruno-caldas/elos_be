@@ -8,10 +8,10 @@ from pycep_correios import WebService, get_address_from_cep
 
 class UsuarioForm(UserCreationForm):
     email = forms.EmailField(max_length=500)
-
+    
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['first_name','last_name','username', 'email', 'password1', 'password2',]
 
     def clean_nome(self):
         pessoa = self.cleaned_data['usarname']

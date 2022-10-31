@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
+from django.contrib.auth import views as auth_views
 import parceiros
 
-from elos_be.views import carrega_abrigo, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate, PaginaHome
+from elos_be.views import carrega_abrigo, carrega_home, carrega_index, carrega_contatos, carrega_ajuda, carrega_resgate, PaginaHome
 
 from cadastro import views
 from eventos import urls, views
@@ -40,14 +41,11 @@ route.register(r'doacao', doadoresviewsets.DoacaoViewSet, basename="Doacao")
 
 app_name = 'elos_be'
 urlpatterns = [
-    #path('', include('cadastro.urls')),
     path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
     path('djrichtextfield/', include('djrichtextfield.urls')), #ATIVAÇÃO DE RICH-TEXT
     path('', RedirectView.as_view(url='/elos/')),
     path('elos/', carrega_index, name="index"),
-    path('home/', PaginaHome.as_view(), name='home'),
-   # path('home/', carrega_aplicacao, name="home"),
     path('elos/projeto', carrega_abrigo, name="projeto"),
     path('elos/contatos', carrega_contatos, name="contatos"),
     path('elos/ajuda', carrega_ajuda, name="ajuda"),
@@ -57,12 +55,13 @@ urlpatterns = [
     path('elos/mural_animais/', include("cadastro.urls")),
     path('elos/blog/', include("blog.urls")),
     path('elos/social/', include("rede_social.urls")),
+    path('home/', PaginaHome.as_view(), name='home'),
+    path('home2/', carrega_home, name='home2'),
+    # path('home/', carrega_aplicacao, name="home"),
     path('', include("login_users.urls")),
     path('doadores', include("doadores.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('', include('doadores.urls')),
-    #url(r'^', include('doadores.urls')),
     path('', include(route.urls)),
     # path('api-auth/', include('rest_framework.urls')),
     

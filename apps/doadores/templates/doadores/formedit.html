@@ -1,32 +1,50 @@
-{% extends 'templates/../home.html' %}
+{% endblock %}
 
+{% extends 'templates/../model-page.html' %}
 {% load static %}
-
 {% load crispy_forms_tags %}
 
-{% block rodape-links %}
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-elos img-fluid rounded mx-auto my-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Logo balões de festa Univesp e Elos de Amor" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Registros</h1>
+      <p class="lead">Cadastro de donativos.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-8 border-secondy justify-content-start">
+        <div class="col-md-4 mx-auto">
+            <h3>Registros</h3>
+
+            <p class="lead">
+                Atualize os campos caso necessário
+            </p>
+            
+            <hr>
+            
+            <form action="" method="POST">
+            
+                {% csrf_token %}
+            
+                {{ form.as_p }}
+            
+            
+                <button type="submit" class="btn btn-success">Atualizar</button>
+            
+            </form>
+
+        </div>
+    </div><!-- Fim row-->
+  </div><!-- Fim do Conteúdo principal -->
+
+</div>
+
 {% endblock %}
 
-{% block conteudo %}
-
-<h3>Registros</h3>
-
-<p class="lead">
-    Atualize os campos caso necessário
-</p>
-
-<hr>
-
-<form action="" method="POST">
-
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-   
-    <button type="submit" class="btn btn-success">Atualizar</button>
-
-</form>
-
-
-{% endblock %}

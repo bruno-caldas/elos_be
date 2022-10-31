@@ -1,14 +1,3 @@
-{% extends 'templates/../home.html' %}
-
-{% load static %}
-
-{% load crispy_forms_tags %}
-
-{% block conteudo %}
-{% endblock %}
-{% block content %}
-
-<h3>LISTA DE DOAÇÕES</h3>
 <style>
     
     .tableContainer{
@@ -42,74 +31,58 @@
     }
 
 </style>
+{% extends 'templates/../model-page.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
-<div class="tableContainer">
-    <table class="fullTable">
-        <thead>
-            <tr>                
-                <th>DA Nº</th>
-                <th>CLASSIFICAÇÃO</th>
-                <th>DESCRIÇÃO DO ITEM DE DOAÇÃO</th>
-                <th>ESTADO DE CONSERVAÇÃO</th>
-                <th>QUANTIDADE DE ITENS</th>
-                <th>DOADOR</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for doacao in object_list %}
-            <tr>
-                <td>{{ doacao.id }}</td>
-                <td>{{ doacao.classificacao }}</td>
-                <td>{{ doacao.descricao }}</td>
-                <td>{{ doacao.estado }}</td>
-                <td>{{ doacao.quantidade }}</td>
-                <td>{{ doacao.username }}</td>
-            </tr>
-            {% empty %}
-        </tbody>
-        {% endfor %}
-    </table>
+{% block content %}
+
+<div class="container-fluid">
+<!-- Cabeçalho da página -->
+  <div class="row justify-content-center jumbotron jumbotron-fluid bg-secondary mt-4 py-4">
+    <div class="col-auto">
+      <img class="univesp-elos img-fluid rounded mx-auto my-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Logo balões de festa Univesp e Elos de Amor" width="90px">
+    </div>
+    <div class="col-md-8 text-white">
+      <h2 class="display-5 font-italic">Donativos</h1>
+      <p class="lead">Veja os  disponíveis.</p>
+    </div>
+  </div><!-- Fim do cabeçalho -->
+<!-- Conteúdo Principal -->
+  <div class="row justify-content-center mt-0">
+    <div class="col-md-12 border-secondy justify-content-start">
+        <div class="col-md-8 mx-auto">
+
+            <div class="tableContainer">
+                <table class="fullTable">
+                    <thead>
+                        <tr>                
+                            <th>Nº</th>
+                            <th>CLASSIFICAÇÃO</th>
+                            <th>DESCRIÇÃO DO ITEM DE DOAÇÃO</th>
+                            <th>ESTADO DE CONSERVAÇÃO</th>
+                            <th>QUANTIDADE DE ITENS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doacao in object_list %}
+                        <tr>
+                            <td>{{ doacao.id }}</td>
+                            <td>{{ doacao.classificacao }}</td>
+                            <td>{{ doacao.descricao }}</td>
+                            <td>{{ doacao.quantidade }}</td>
+                            <td>{{ doacao.estado }}</td>
+                        </tr>
+                        {% empty %}
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+    </div><!-- Fim row-->
+  </div><!-- Fim do Conteúdo principal -->
+
 </div>
 
-{% endblock %}s %}
-
-<!--
-<div class="table">
-
-    <table class="table table-striped">
-        <tr class="dataList">
-            <th>DN Nº</th>
-            <th>NOME</th>
-            <th>SOBRENOME</th>
-            <th>DATA DE NASCIMENTO</th>
-            <th>ENDEREÇO</th>
-            <th>Nº</th>
-            <th>COMPLEMENTO</th>
-            <th>CEL</th>
-            <th>DOADOR</th>
-        </tr>
-
-        {% for doadores in object_list %}
-
-        <tr>
-            <td>{{ doadores.id }}</td>
-            <td>{{ doadores.nome }}</td>
-            <td>{{ doadores.sobrenome }}</td>
-            <td>{{ doadores.dt_nasc }}</td>
-            <td>{{ doadores.endereco }}</td>
-            <td>{{ doadores.numero }}</td>
-            <td>{{ doadores.complemento }}</td>
-            <td>{{ doadores.celular }}</td>
-            <td>{{ doadores.Doador }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="8">Não foram encontrados dados nesta pesquisa</td>
-        </tr>
-
-        {% endfor %}
-
-    </table>
-</div>
-
--->
+{% endblock %}

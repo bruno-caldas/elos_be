@@ -8,13 +8,10 @@ from . import views
 # app_name = 'login_users'
 
 urlpatterns = [
-
-    path('login/', auth_views.LoginView.as_view(template_name = 'login_users/form.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('signup/', UsuarioCreate.as_view(template_name = 'login_users/formSIGNUP.html'    ), name='signup'),
+    path('login/',auth_views.LoginView.as_view(template_name = 'login_users/login.html'), name='login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name = 'login_userf/logout.html'), name='logout'),
+    path('signup/',UsuarioCreate.as_view(template_name = 'login_users/signup.html'), name='signup'),
     path('via_cep', carrega_cep, name='cep'),
-    path('pesquisa_cep', pesquisa_cep,name="via_cep"),
-
-   # path('', views.carrega_login, name='carrega_login'),
+    path('pesquisa_cep',pesquisa_cep,name="via_cep"),
 ] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

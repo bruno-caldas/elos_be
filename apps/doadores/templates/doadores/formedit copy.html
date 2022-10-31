@@ -1,0 +1,32 @@
+{% extends 'templates/../home.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block rodape-links %}
+{% endblock %}
+
+{% block conteudo %}
+
+<h3>Registros</h3>
+
+<p class="lead">
+    Atualize os campos caso necessário
+</p>
+
+<hr>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+   
+    <button type="submit" class="btn btn-success">Atualizar</button>
+
+</form>
+
+
+{% endblock %}

@@ -48,10 +48,6 @@ class Doadores(models.Model):
     def __str__(self):
         return "{} {} {} ({})".format(self.nome, self.username, self.celular, self.Intencao)
 
-
-   
-
-
 class Doacao(models.Model):
     
     AL = 'ALIMENTOS NÃO PERECÍVEIS'
@@ -73,9 +69,9 @@ class Doacao(models.Model):
         (LV, 'LIVROS'),
         (MV, 'MOVÉIS'),
         (RP, 'ROUPAS COMUM'),
-        (RPC, 'ROUPAS DE FRIO E ACESSÓRIOS'),
-           
+        (RPC, 'ROUPAS DE FRIO E ACESSÓRIOS')
     )
+
     classificacao =  models.CharField(choices=classificacao, verbose_name="Tipo de Doação", max_length=56)
     
     descricao = models.CharField(max_length=3000, verbose_name='Descrição do item para doação')
@@ -89,15 +85,12 @@ class Doacao(models.Model):
         (NV, 'NOVO'),
         (SM, 'SEMI-NOVO'),
         (US, 'USADO'),
-        (NA, 'NÃO SE APLICA'),
-                
+        (NA, 'NÃO SE APLICA')
     )
     estado =  models.CharField(choices=listestado, verbose_name="Estado de Conservação", max_length=50)
     quantidade = models.IntegerField(verbose_name='Quantidade de Itens', null=False)
     username = models.ForeignKey(User, on_delete=models.PROTECT, null=False, verbose_name='Doador' )
-
     def get_absolute_url(self):
         return reverse('novadoacao')
-
     def __str__(self):
         return "{} {} {} {} ({})".format(self.classificacao, self.descricao, self.estado, self.quantidade, self.username)

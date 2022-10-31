@@ -23,18 +23,20 @@
       <ul class="navbar-nav ml-auto">
       {% if request.user.is_authenticated %}
       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navSocial">
+        <li class="nav-item dropdown"   id="navDropDownLogado">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDropDownLinkUser">
             <span id="username">{{ request.user }}</span>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'home' %}">Home</a>
-            <!--<a class="dropdown-item" href="{% url 'ldoacao' %}">
-              Minhas Doações-->
-            </a>
+            <a class="dropdown-item" href="{% url 'home' %}" id="navDropDownLinkHome">Home</a>
+            <a class="dropdown-item" href="{% url 'formc' %}" id="navDropDownLinkPerfil">Dados Pessoais</a>
+            <a class="dropdown-item" href="{% url 'ldoacao' %}" id="navDropDownLinkDonativos">Todos os Donativos</a>
+            <a class="dropdown-item" href="{% url 'novadoacao' %}" id="navDropDownLinkAddDoacao">Nova Doação</a>
+            <a class="dropdown-item" href="{% url 'listar' %}" id="navDropDownLinkAllDoadores">Listar Doadores</a>
+            <a class="dropdown-item" href="{% url 'formup' %}" id="navDropDownLinkAtualizaPerfil">Atualiza Perfil</a>
             {% if user.is_superuser %}
                 <!--<a class="dropdown-item" href="{% url 'home' %}">Home</a>-->
-                <!--<a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>-->
+                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
             {% endif %}
             <a class="dropdown-item" href="{% url 'logout' %}">
               Sair
@@ -42,15 +44,15 @@
           </div>
         </li>
       {% else %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown" id="navDropDownNaoLogado">
+          <a class="nav-link dropdown-toggle" href="#" id="navDropDownLinkMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Menu
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'login' %}">
+            <a class="dropdown-item" href="{% url 'login' %}"  id="navDropDownLinkLogin" >
               Login
             </a>
-            <a class="dropdown-item" href="{% url 'cep' %}">
+            <a class="dropdown-item" href="{% url 'cep' %}"  id="navDropDownLinkInscreva" >
               Inscreva-se
             </a>
           </div>

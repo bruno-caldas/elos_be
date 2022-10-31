@@ -11,15 +11,31 @@
       <img class="univesp-elos img-fluid rounded mx-auto my-auto d-block" src="https://piunivesp.s3.sa-east-1.amazonaws.com/media/evento2.svg" alt="Logo balões de festa Univesp e Elos de Amor" width="90px">
     </div>
     <div class="col-md-8 text-white">
-      <h2 class="display-5 font-italic">Tela Inicial</h1>
-      <p class="lead">Bemvindo, {{ request.user.first_name }} {{ request.user.last_name }}. Escolha uma das opções abaixo.</p>
+      <h2 class="display-5 font-italic">Inscreva-se</h1>
+      <p class="lead">Não deixe de participar! Faça sua inscrição e também seja um Elo de Amor!</p>
     </div>
   </div><!-- Fim do cabeçalho -->
 <!-- Conteúdo Principal -->
   <div class="row justify-content-center mt-0">
     <div class="col-md-8 border-secondy justify-content-start">
         <div class="col-md-4 mx-auto">
-
+            {% if request.user.is_authenticated %}
+            <h3><i class="fa fa-exclamation" aria-hidden="true"></i>
+                Acesso Não Permitido
+            </h3>
+            <hr>
+            <p class="lead">
+                <strong>Usuário não possui acesso ao modulo de cadastro</strong>
+            </p>
+            {% else %}
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br />
+                <button type="submit" class="btn btn-secondary">Acessar</button>
+            </form>
+            {% endif %}
         </div>
     </div><!-- Fim row-->
   </div><!-- Fim do Conteúdo principal -->
