@@ -5,10 +5,12 @@ class DoadoresSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Doadores
         fields = '__all__'
-        fields = 'nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intencao', 'Doador' 
+        #fields = 'nome', 'sobrenome', 'dt_nasc', 'endereco', 'numero', 'complemento', 'celular', 'Intencao', 'Doador' 
 
 class DoacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Doacao
-        fields = 'Classificacao', 'Descricao', 'Estado', 'Quantidade', 'Doador'
+        #fields = 'Classificacao', 'Descricao', 'Estado', 'Quantidade', 'Doador'
+        fields = '__all__'
+
             

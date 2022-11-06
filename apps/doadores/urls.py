@@ -17,5 +17,4 @@ urlpatterns = [
     path('ldoacao/', DoacaoList.as_view(), name='ldoacao'),
     path('formup/', DoadoresUpdate.as_view(), name='formup'),
     path('formc/', AtualizacaoDoadorCreate.as_view(), name='formc'),
-            
 ]

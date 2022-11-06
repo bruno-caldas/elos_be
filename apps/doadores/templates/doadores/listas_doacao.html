@@ -62,6 +62,7 @@
                             <th>DESCRIÇÃO DO ITEM DE DOAÇÃO</th>
                             <th>ESTADO DE CONSERVAÇÃO</th>
                             <th>QUANTIDADE DE ITENS</th>
+                            <th>DONATIVO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +73,7 @@
                             <td>{{ doacao.descricao }}</td>
                             <td>{{ doacao.quantidade }}</td>
                             <td>{{ doacao.estado }}</td>
+                            <td>{{ doacao.intencao }}</td>
                         </tr>
                         {% empty %}
                     </tbody>

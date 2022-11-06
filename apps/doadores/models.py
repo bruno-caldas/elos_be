@@ -16,8 +16,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 # Create your models here.
 
 class Doadores(models.Model):
-    nome = models.CharField(max_length=50, verbose_name='Primeiro Nome')
-    sobrenome = models.CharField(max_length=50, verbose_name='Sobrenome')
+    #nome = models.CharField(max_length=50, verbose_name='Primeiro Nome')
+    #sobrenome = models.CharField(max_length=50, verbose_name='Sobrenome')
     dt_nasc = models.DateField(max_length=11, verbose_name='Data de Nascimento')
     cep = models.CharField(max_length=9, verbose_name='CEP')
     endereco = models.CharField(max_length=500, verbose_name='Endereço')
@@ -30,25 +30,36 @@ class Doadores(models.Model):
    
     celular = models.CharField(max_length=16, verbose_name='Celular para Contato',unique=True)
        
-    DO = 'DOADOR'
-    DT = 'DONATÁRIO'
+    #DO = 'DOADOR'
+    #DT = 'DONATÁRIO'
                            
-    intencao = (
-        (DO, 'DOADOR'),
-        (DT, 'DONATÁRIO'),
-                
-    )
+    #intencao = (
+    #    (DO, 'DOADOR'),
+    #    (DT, 'DONATÁRIO'),
+    #            
+    #)
 
-    Intencao =  models.CharField(choices=intencao, verbose_name="Intenção", max_length=50)
+    #Intencao =  models.CharField(choices=intencao, verbose_name="Intenção", max_length=50)
     username = models.ForeignKey(User, on_delete=models.PROTECT, null= False, verbose_name='Doador')
 
     def get_absolute_url(self):
         return reverse_lazy('home')
 
     def __str__(self):
-        return "{} {} {} ({})".format(self.nome, self.username, self.celular, self.Intencao)
+        #return "{} {} {} ({})".format(self.nome, self.username, self.celular, self.Intencao)
+        return "{}".format(self.username.get_full_name())
 
 class Doacao(models.Model):
+
+    DO = 'DOAR' #'DOADOR'
+    DT = 'RECEBER'     #'DONATÁRIO'
+                          
+    intencao = (
+        (DO, 'DOAR'),
+        (DT, 'RECEBER')         
+    )
+
+    intencao =  models.CharField(choices=intencao, verbose_name="Intenção do Donativo", max_length=50)
     
     AL = 'ALIMENTOS NÃO PERECÍVEIS'
     AN = 'ANIMAIS'
