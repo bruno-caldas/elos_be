@@ -49,7 +49,7 @@ class DadoPessoalTestCase(TestCase):
             "cep":"04543-433"}
         DadoPessoal.objects.create(**moc_dado_pessoal_user1)
 
-    def test_doadores_str_(self):
+    def test_dado_pessoal_str_(self):
 
         # pega instância de teste criada no setUp do testCase
         dado_pessoal = DadoPessoal.objects.get(cep='04543-433')
