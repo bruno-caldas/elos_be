@@ -65,13 +65,17 @@ class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     group_required = u"Doadores"
     model = Doacao
+    #intencao = 'DT'
+    #queryset = Doacao.objects.filter(intencao=intencao)
+    #.values_list('intencao')
     template_name = 'doadores/listas_doacao.html'
+    #queryset = Doacao.objects.all()
 
     #def get_queryset(self):
      #   self.object_list = Doadores.objects.filter(username=self.request.user)
       #  return self.object_list
 
-
+#do = DoacaoList()
 
 ## Model registrar
 
@@ -95,7 +99,7 @@ class DoadoresCreate(LoginRequiredMixin,GroupRequiredMixin, CreateView):
 class DoacaoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Doacao
-    fields = ['classificacao', 'descricao', 'estado', 'quantidade']
+    fields = ['intencao','classificacao', 'descricao', 'estado', 'quantidade']
     template_name = "doadores/formdoacao.html"
     sucess_url = reverse_lazy('novadoacao')
     success_message = 'Obrigado(a) pela sua doação, com pequenas ações fazemos a diferença. DEUS te abençõe!!'
@@ -117,7 +121,7 @@ class DoadoresUpdate(UpdateView, GroupRequiredMixin):
     login_url = reverse_lazy('login')
     group_required = u"Doadores"
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    fields = ['dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular']
     template_name = 'doadores/formdoadores.html'
     sucess_url = reverse_lazy('home')
 
@@ -136,7 +140,7 @@ class DoadoresUpdate(UpdateView, GroupRequiredMixin):
 class AtualizacaoDoadorCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Doadores
-    fields = ['nome', 'sobrenome', 'dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular', 'Intencao']
+    fields = ['dt_nasc', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'celular']
     template_name = 'doadores/formdoadores.html'
     success_url = reverse_lazy('home')
     
