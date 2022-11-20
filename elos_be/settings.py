@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'eventos',
     'parceiros',
     'rede_social',
+    'usuarios',
     'doadores',
     'blog',
     'cadastro',
