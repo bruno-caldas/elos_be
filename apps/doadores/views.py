@@ -65,8 +65,7 @@ class DoacaoList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     group_required = u"Doadores"
     model = Doacao
-    #intencao = 'DT'
-    #queryset = Doacao.objects.filter(intencao=intencao)
+    queryset = Doacao.objects.filter(publicar=True)
     #.values_list('intencao')
     template_name = 'doadores/listas_doacao.html'
     #queryset = Doacao.objects.all()
@@ -99,7 +98,7 @@ class DoadoresCreate(LoginRequiredMixin,GroupRequiredMixin, CreateView):
 class DoacaoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Doacao
-    fields = ['intencao','classificacao', 'descricao', 'estado', 'quantidade']
+    fields = ['intencao','classificacao', 'descricao', 'estado','tamanho','detalhamento','quantidade']
     template_name = "doadores/formdoacao.html"
     sucess_url = reverse_lazy('novadoacao')
     success_message = 'Obrigado(a) pela sua doação, com pequenas ações fazemos a diferença. DEUS te abençõe!!'
